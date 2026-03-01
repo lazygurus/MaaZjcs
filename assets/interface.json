@@ -4,8 +4,8 @@
     // 文档：https://maafw.xyz/docs/3.3-ProjectInterfaceV2
     // 示例：https://github.com/MaaXYZ/MaaFramework/blob/main/sample/interface.json
     "interface_version": 2,
-    "name": "MaaXXX",
-    "description": "这是一个使用 MaaFramework 创建的新项目。",
+    "name": "MaaZjcs",
+    "description": "这是一个使用 MaaFramework 创建的杖剑传说自动化项目。",
     "contact": "QQ群: 123456789",
     "license": "MIT",
     "welcome": "首次使用！欢迎使用 MAA!",
@@ -18,36 +18,37 @@
     // "mirrorchyan_multiplatform": true,
     "controller": [
         {
-            "name": "安卓端",
+            "name": "ADB",
+            "label": "模拟器",
             "type": "Adb",
             "display_short_side": 720 // 默认缩放分辨率的短边长度
         },
-        {
-            "name": "桌面端",
-            "type": "Win32",
-            "win32": {
-                "class_regex": ".*",
-                "window_regex": "Visual Studio",
-                // 截图及控制方式，请根据项目实际情况修改
-                // 文档: https://maafw.xyz/docs/2.4-ControlMethods
-                "screencap": "PrintWindow", // 截图方式
-                "mouse": "PostMessageWithCursorPos", // 鼠标控制方式
-                "keyboard": "PostMessageWithCursorPos" // 键盘控制方式
-            }
-        }
+        // {
+        //     "name": "桌面端",
+        //     "type": "Win32",
+        //     "win32": {
+        //         "class_regex": ".*",
+        //         "window_regex": "Visual Studio",
+        //         // 截图及控制方式，请根据项目实际情况修改
+        //         // 文档: https://maafw.xyz/docs/2.4-ControlMethods
+        //         "screencap": "PrintWindow", // 截图方式
+        //         "mouse": "PostMessageWithCursorPos", // 鼠标控制方式
+        //         "keyboard": "PostMessageWithCursorPos" // 键盘控制方式
+        //     }
+        // }
     ],
     "resource": [
         {
             "name": "官服",
             "path": [
-                "./resource"
+                "./resource/base"
             ]
         },
         {
             "name": "B 服",
             "path": [
                 "./resource",
-                "./resource_bilibili"
+                "./resource/bilibili"
             ]
         }
     ],
@@ -60,50 +61,53 @@
     // },
     "task": [
         {
-            "name": "普通任务",
-            "entry": "MyTask1"
-        },
-        {
-            "name": "选项任务",
-            "entry": "MyTask2",
-            "option": [
-                "任务选项1"
+            "name": "启动游戏",
+            "entry": "StartUp",
+            "controller": [
+                "ADB"
             ]
         },
-        {
-            "name": "参数任务",
-            "entry": "MyTask3",
-            "option": [
-                "任务选项1"
-            ],
-            "pipeline_override": {}
-        },
-        {
-            "name": "带Custom的任务",
-            "entry": "MyTask4"
-        }
+        // {
+        //     "name": "选项任务",
+        //     "entry": "MyTask2",
+        //     "option": [
+        //         "任务选项1"
+        //     ]
+        // },
+        // {
+        //     "name": "参数任务",
+        //     "entry": "MyTask3",
+        //     "option": [
+        //         "任务选项1"
+        //     ],
+        //     "pipeline_override": {}
+        // },
+        // {
+        //     "name": "带Custom的任务",
+        //     "entry": "MyTask4"
+        // }
     ],
-    "option": {
-        "任务选项1": {
-            "type": "select",
-            "cases": [
-                {
-                    "name": "文本1",
-                    "pipeline_override": {
-                        "OcrTask": {
-                            "text": "文本1"
-                        }
-                    }
-                },
-                {
-                    "name": "文本2",
-                    "pipeline_override": {
-                        "OcrTask": {
-                            "text": "文本2"
-                        }
-                    }
-                }
-            ]
-        }
-    }
+    // "option": {
+    //     "任务选项1": {
+    //         "type": "select",
+    //         "cases": [
+    //             {
+    //                 "name": "文本1",
+    //                 "pipeline_override": {
+    //                     "OcrTask": {
+    //                         "text": "文本1"
+    //                     }
+    //                 }
+    //             },
+    //             {
+    //                 "name": "文本2",
+    //                 "pipeline_override": {
+    //                     "OcrTask": {
+    //                         "text": "文本2"
+    //                     }
+    //                 }
+    //             }
+    //         ]
+    //     }
+    // }
 }

@@ -1,0 +1,412 @@
+{
+    "StartUp": {
+        "post_wait_freezes": 300,
+        "timeout": 30000,
+        "next": [
+            // "StartGame",
+            "[JumpBack]HomeLoading",
+            "[JumpBack]TextLoading",
+            "[JumpBack]RecognizeResourceList",
+            "[JumpBack]DownLoading",
+            "[JumpBack]ConfirmButton",
+            "[JumpBack]Initialization",
+            "Login",
+            "[JumpBack]CloseAnnouncement",
+            "EnterGame"
+        ]
+    },
+    "StartGame": {
+        "action": {
+            "type": "StartApp",
+            "param": {
+                "package": "com.leiting.zjcs"
+            }
+        },
+        "next": [
+            "[JumpBack]HomeLoading",
+            "[JumpBack]TextLoading",
+            "[JumpBack]RecognizeResourceList",
+            "[JumpBack]DownLoading",
+            "[JumpBack]ConfirmButton",
+            "[JumpBack]Initialization",
+            "Login",
+            "[JumpBack]CloseAnnouncement",
+            "EnterGame"
+        ]
+    },
+    "HomeLoading": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    284,
+                    563,
+                    151,
+                    154
+                ],
+                "template": [
+                    "icon.png"
+                ]
+            }
+        },
+        "next": [
+            "WaitHomeLoadingGone"
+        ],
+        "timeout": 30000,
+        "on_error": [
+            "StuckHandler"
+        ]
+    },
+    "TextLoading": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    236,
+                    417,
+                    264,
+                    47
+                ],
+                "expected": [
+                    "健康游戏忠告"
+                ],
+                "only_rec": true
+            }
+        },
+        "next": [
+            "WaitTextLoadingGone"
+        ],
+        "timeout": 30000,
+        "on_error": [
+            "StuckHandler"
+        ]
+    },
+    "RecognizeResourceList": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    237,
+                    974,
+                    166,
+                    33
+                ],
+                "expected": [
+                    "资源清单"
+                ]
+            }
+        },
+        "next": [
+            "WaitRecognizeResourceListGone"
+        ],
+        "timeout": 60000,
+        "on_error": [
+            "StuckHandler"
+        ]
+    },
+    "DownLoading": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    183,
+                    978,
+                    102,
+                    30
+                ],
+                "expected": [
+                    "下载"
+                ]
+            }
+        },
+        "post_wait_freezes": 3000,
+        "next": [
+            "WaitDownLoadingGone",
+            "DownloadProgressWatch" // 静止满30秒视为卡顿
+        ]
+    },
+    "ConfirmButton": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    233,
+                    707,
+                    254,
+                    73
+                ],
+                "expected": [
+                    "确定"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": 300,
+        "next": [
+            "WaitConfirmButtonGone"
+        ],
+        "timeout": 30000,
+        "on_error": [
+            "StuckHandler"
+        ]
+    },
+    "Initialization": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    287,
+                    979,
+                    103,
+                    27
+                ],
+                "expected": [
+                    "初始化"
+                ]
+            }
+        },
+        "post_wait_freezes": 3000,
+        "next": [
+            "WaitInitializationGone"
+        ],
+        "timeout": 30000,
+        "on_error": [
+            "StuckHandler"
+        ]
+    },
+    "Login": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    183,
+                    728,
+                    353,
+                    67
+                ],
+                "expected": [
+                    "登录",
+                    "注册"
+                ]
+            }
+        },
+        "next": [
+            "Shutdown"
+        ],
+        "timeout": 30000
+    },
+    "CloseAnnouncement": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    319,
+                    71,
+                    80,
+                    50
+                ],
+                "expected": [
+                    "公告"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    38,
+                    1195,
+                    73,
+                    49
+                ]
+            }
+        },
+        "next": [
+            "WaitCloseAnnouncementGone"
+        ],
+        "timeout": 30000,
+        "on_error": [
+            "StuckHandler"
+        ]
+    },
+    "EnterGame": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    178,
+                    1037,
+                    345,
+                    44
+                ],
+                "expected": "开始游戏"
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "Shutdown": {
+        "action": {
+            "type": "StopApp",
+            "param": {
+                "package": "com.leiting.zjcs"
+            }
+        }
+    },
+    "WaitHomeLoadingGone": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    284,
+                    563,
+                    151,
+                    154
+                ],
+                "template": "icon.png"
+            }
+        },
+        "inverse": true,
+        "post_delay": 1000
+    },
+    "WaitTextLoadingGone": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    236,
+                    417,
+                    264,
+                    47
+                ],
+                "expected": [
+                    "健康游戏忠告"
+                ],
+                "only_rec": true
+            }
+        },
+        "inverse": true,
+        "post_delay": 2000
+    },
+    "WaitRecognizeResourceListGone": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    237,
+                    974,
+                    166,
+                    33
+                ],
+                "expected": [
+                    "资源清单"
+                ]
+            }
+        },
+        "inverse": true,
+        "post_delay": 2000
+    },
+    "WaitDownLoadingGone": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    183,
+                    978,
+                    102,
+                    30
+                ],
+                "expected": [
+                    "下载"
+                ]
+            }
+        },
+        "inverse": true
+    },
+    "DownloadProgressWatch": {
+        "post_wait_freezes": {
+            "time": 30000,
+            "target": [
+                322,
+                976,
+                220,
+                31
+            ]
+        },
+        "timeout": -1,
+        "next": [
+            "StuckHandler"
+        ]
+    },
+    "WaitConfirmButtonGone": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    233,
+                    707,
+                    254,
+                    73
+                ],
+                "expected": [
+                    "确定"
+                ]
+            }
+        },
+        "inverse": true
+    },
+    "WaitInitializationGone": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    287,
+                    979,
+                    103,
+                    27
+                ],
+                "expected": [
+                    "初始化"
+                ]
+            }
+        },
+        "inverse": true
+    },
+    "WaitCloseAnnouncementGone": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    319,
+                    71,
+                    80,
+                    50
+                ],
+                "expected": [
+                    "公告"
+                ]
+            }
+        },
+        "inverse": true
+    },
+    "StuckHandler": {
+        "action": {
+            "type": "StopApp",
+            "param": {
+                "package": "com.leiting.zjcs"
+            }
+        },
+        "next": [
+            "RestartGame"
+        ]
+    },
+    "RestartGame": {
+        "post_delay": 5000,
+        "next": [
+            "StartUp"
+        ]
+    }
+}

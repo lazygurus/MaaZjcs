@@ -1,0 +1,10 @@
+{
+    "StartGame": {
+        "action": {
+            "type": "StartApp",
+            "param": {
+                "package": "com.leiting.zjcs.bilibili"
+            }
+        }
+    }
+}
