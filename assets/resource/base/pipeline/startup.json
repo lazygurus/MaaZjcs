@@ -1,9 +1,9 @@
 {
     "StartUp": {
-        "post_wait_freezes": 300,
-        "timeout": 30000,
+        "post_wait_freezes": 1000,
+        "timeout": 60000,
         "next": [
-            // "StartGame",
+            "StartGame",
             "[JumpBack]HomeLoading",
             "[JumpBack]TextLoading",
             "[JumpBack]RecognizeResourceList",
@@ -16,11 +16,16 @@
         ]
     },
     "StartGame": {
-        "action": {
-            "type": "StartApp",
+        "recognition": {
+            "type": "TemplateMatch",
             "param": {
-                "package": "com.leiting.zjcs"
+                "template": [
+                    "icon.png"
+                ]
             }
+        },
+        "action": {
+            "type": "Click"
         },
         "next": [
             "[JumpBack]HomeLoading",
@@ -45,14 +50,14 @@
                     154
                 ],
                 "template": [
-                    "icon.png"
+                    "homeicon.png"
                 ]
             }
         },
         "next": [
             "WaitHomeLoadingGone"
         ],
-        "timeout": 30000,
+        "timeout": 60000,
         "on_error": [
             "StuckHandler"
         ]
@@ -76,7 +81,7 @@
         "next": [
             "WaitTextLoadingGone"
         ],
-        "timeout": 30000,
+        "timeout": 60000,
         "on_error": [
             "StuckHandler"
         ]
@@ -119,10 +124,8 @@
                 ]
             }
         },
-        "post_wait_freezes": 3000,
         "next": [
-            "WaitDownLoadingGone",
-            "DownloadProgressWatch" // 静止满30秒视为卡顿
+            "DownloadProgressWatch" // 下载进度静止满60秒视为卡顿
         ]
     },
     "ConfirmButton": {
@@ -143,11 +146,10 @@
         "action": {
             "type": "Click"
         },
-        "post_wait_freezes": 300,
         "next": [
             "WaitConfirmButtonGone"
         ],
-        "timeout": 30000,
+        "timeout": 60000,
         "on_error": [
             "StuckHandler"
         ]
@@ -167,11 +169,10 @@
                 ]
             }
         },
-        "post_wait_freezes": 3000,
         "next": [
             "WaitInitializationGone"
         ],
-        "timeout": 30000,
+        "timeout": 60000,
         "on_error": [
             "StuckHandler"
         ]
@@ -192,10 +193,22 @@
                 ]
             }
         },
+        "focus": {
+            "Node.Recognition.Succeeded": {
+                "content": "检测到登录页面，请先登录",
+                "display": [
+                    "log",
+                    "toast"
+                ]
+            }
+        },
         "next": [
-            "Shutdown"
+            "WaitLoginGone"
         ],
-        "timeout": 30000
+        "timeout": 120000,
+        "on_error": [
+            "StuckHandler"
+        ]
     },
     "CloseAnnouncement": {
         "recognition": {
@@ -226,7 +239,7 @@
         "next": [
             "WaitCloseAnnouncementGone"
         ],
-        "timeout": 30000,
+        "timeout": 60000,
         "on_error": [
             "StuckHandler"
         ]
@@ -266,11 +279,10 @@
                     151,
                     154
                 ],
-                "template": "icon.png"
+                "template": "homeicon.png"
             }
         },
-        "inverse": true,
-        "post_delay": 1000
+        "inverse": true
     },
     "WaitTextLoadingGone": {
         "recognition": {
@@ -288,8 +300,7 @@
                 "only_rec": true
             }
         },
-        "inverse": true,
-        "post_delay": 2000
+        "inverse": true
     },
     "WaitRecognizeResourceListGone": {
         "recognition": {
@@ -306,8 +317,7 @@
                 ]
             }
         },
-        "inverse": true,
-        "post_delay": 2000
+        "inverse": true
     },
     "WaitDownLoadingGone": {
         "recognition": {
@@ -328,7 +338,7 @@
     },
     "DownloadProgressWatch": {
         "post_wait_freezes": {
-            "time": 30000,
+            "time": 60000,
             "target": [
                 322,
                 976,
@@ -339,6 +349,27 @@
         "timeout": -1,
         "next": [
             "StuckHandler"
+        ]
+    },
+    "WaitLoginGone": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    183,
+                    728,
+                    353,
+                    67
+                ],
+                "expected": [
+                    "登录",
+                    "注册"
+                ]
+            }
+        },
+        "inverse": true,
+        "next": [
+            "StartUp"
         ]
     },
     "WaitConfirmButtonGone": {
@@ -393,6 +424,15 @@
         "inverse": true
     },
     "StuckHandler": {
+        "focus": {
+            "Node.Action.Starting": {
+                "content": "启动流程卡顿或超时，已关闭游戏",
+                "display": [
+                    "log",
+                    "toast"
+                ]
+            }
+        },
         "action": {
             "type": "StopApp",
             "param": {
