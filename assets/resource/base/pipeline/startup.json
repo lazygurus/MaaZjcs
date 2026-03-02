@@ -6,16 +6,18 @@
             "StartGame",
             "[JumpBack]HomeLoading",
             "[JumpBack]TextLoading",
-            "[JumpBack]RecognizeResourceList",
+            "[JumpBack]Loading",
             "[JumpBack]DownLoading",
             "[JumpBack]ConfirmButton",
-            "[JumpBack]Initialization",
-            "Login",
+            "[JumpBack]Login",
             "[JumpBack]CloseAnnouncement",
-            "EnterGame"
+            "[JumpBack]EnterGame",
+            "[JumpBack]CloseGift",
+            "HomePage"  // 游戏启动结束，进入主页面
         ]
     },
     "StartGame": {
+        "timeout": 60000,
         "recognition": {
             "type": "TemplateMatch",
             "param": {
@@ -30,13 +32,14 @@
         "next": [
             "[JumpBack]HomeLoading",
             "[JumpBack]TextLoading",
-            "[JumpBack]RecognizeResourceList",
+            "[JumpBack]Loading",
             "[JumpBack]DownLoading",
             "[JumpBack]ConfirmButton",
-            "[JumpBack]Initialization",
-            "Login",
+            "[JumpBack]Login",
             "[JumpBack]CloseAnnouncement",
-            "EnterGame"
+            "[JumpBack]EnterGame",
+            "[JumpBack]CloseGift",
+            "HomePage"  // 游戏启动结束，进入主页面
         ]
     },
     "HomeLoading": {
@@ -86,25 +89,22 @@
             "StuckHandler"
         ]
     },
-    "RecognizeResourceList": {
+    "Loading": {
         "recognition": {
             "type": "OCR",
             "param": {
-                "roi": [
-                    237,
-                    974,
-                    166,
-                    33
-                ],
                 "expected": [
-                    "资源清单"
+                    "加载",
+                    "稍候",
+                    "资源清单",
+                    "初始化"
                 ]
             }
         },
         "next": [
-            "WaitRecognizeResourceListGone"
+            "WaitLoadingGone"
         ],
-        "timeout": 60000,
+        "timeout": 120000,  // 2分钟加载时间
         "on_error": [
             "StuckHandler"
         ]
@@ -125,7 +125,11 @@
             }
         },
         "next": [
-            "DownloadProgressWatch" // 下载进度静止满60秒视为卡顿
+            "WaitDownLoadingGone"
+        ],
+        "timeout": 600000, // 持续等待10分钟下载
+        "on_error": [
+            "StuckHandler"
         ]
     },
     "ConfirmButton": {
@@ -148,29 +152,6 @@
         },
         "next": [
             "WaitConfirmButtonGone"
-        ],
-        "timeout": 60000,
-        "on_error": [
-            "StuckHandler"
-        ]
-    },
-    "Initialization": {
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "roi": [
-                    287,
-                    979,
-                    103,
-                    27
-                ],
-                "expected": [
-                    "初始化"
-                ]
-            }
-        },
-        "next": [
-            "WaitInitializationGone"
         ],
         "timeout": 60000,
         "on_error": [
@@ -205,7 +186,7 @@
         "next": [
             "WaitLoginGone"
         ],
-        "timeout": 120000,
+        "timeout": 120000,  // 2分钟登录时间
         "on_error": [
             "StuckHandler"
         ]
@@ -235,14 +216,7 @@
                     49
                 ]
             }
-        },
-        "next": [
-            "WaitCloseAnnouncementGone"
-        ],
-        "timeout": 60000,
-        "on_error": [
-            "StuckHandler"
-        ]
+        }
     },
     "EnterGame": {
         "recognition": {
@@ -259,6 +233,44 @@
         },
         "action": {
             "type": "Click"
+        }
+    },
+    "CloseGift": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [158,521,404,75],
+                "expected": [
+                    "礼包"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",  // 点击空白区域关闭礼包弹窗
+            "param": {
+                "target": [
+                    35,
+                    101,
+                    163,
+                    169
+                ]
+            }
+        }
+    },
+    "HomePage": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    291,
+                    1148,
+                    142,
+                    135
+                ],
+                "expected": [
+                    "家园"
+                ]
+            }
         }
     },
     "Shutdown": {
@@ -302,23 +314,6 @@
         },
         "inverse": true
     },
-    "WaitRecognizeResourceListGone": {
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "roi": [
-                    237,
-                    974,
-                    166,
-                    33
-                ],
-                "expected": [
-                    "资源清单"
-                ]
-            }
-        },
-        "inverse": true
-    },
     "WaitDownLoadingGone": {
         "recognition": {
             "type": "OCR",
@@ -335,42 +330,6 @@
             }
         },
         "inverse": true
-    },
-    "DownloadProgressWatch": {
-        "post_wait_freezes": {
-            "time": 60000,
-            "target": [
-                322,
-                976,
-                220,
-                31
-            ]
-        },
-        "timeout": -1,
-        "next": [
-            "StuckHandler"
-        ]
-    },
-    "WaitLoginGone": {
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "roi": [
-                    183,
-                    728,
-                    353,
-                    67
-                ],
-                "expected": [
-                    "登录",
-                    "注册"
-                ]
-            }
-        },
-        "inverse": true,
-        "next": [
-            "StartUp"
-        ]
     },
     "WaitConfirmButtonGone": {
         "recognition": {
@@ -389,41 +348,45 @@
         },
         "inverse": true
     },
-    "WaitInitializationGone": {
+    "WaitLoginGone": {
         "recognition": {
             "type": "OCR",
             "param": {
                 "roi": [
-                    287,
-                    979,
-                    103,
-                    27
+                    183,
+                    728,
+                    353,
+                    67
                 ],
                 "expected": [
+                    "登录",
+                    "注册"
+                ]
+            }
+        },
+        "inverse": true
+    },
+    "WaitLoadingGone": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "加载",
+                    "稍候",
+                    "资源清单",
                     "初始化"
                 ]
             }
         },
         "inverse": true
     },
-    "WaitCloseAnnouncementGone": {
-        "recognition": {
-            "type": "OCR",
+    "StuckHandler": {
+        "action": {
+            "type": "StopApp",
             "param": {
-                "roi": [
-                    319,
-                    71,
-                    80,
-                    50
-                ],
-                "expected": [
-                    "公告"
-                ]
+                "package": "com.leiting.zjcs"
             }
         },
-        "inverse": true
-    },
-    "StuckHandler": {
         "focus": {
             "Node.Action.Starting": {
                 "content": "启动流程卡顿或超时，已关闭游戏",
@@ -431,12 +394,6 @@
                     "log",
                     "toast"
                 ]
-            }
-        },
-        "action": {
-            "type": "StopApp",
-            "param": {
-                "package": "com.leiting.zjcs"
             }
         },
         "next": [
@@ -447,6 +404,16 @@
         "post_delay": 5000,
         "next": [
             "StartUp"
-        ]
+        ],
+        "focus": {
+            "Node.Action.Starting": {
+                "content": "重启游戏中",
+                "display": [
+                    "log",
+                    "toast"
+                ]
+            }
+        },
+        "max_hit": 2
     }
 }
