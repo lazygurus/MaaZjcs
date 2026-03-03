@@ -90,38 +90,8 @@
             ]
         }
     },
-    "preset": [
-        {
-            "name": "大号预设",
-            "task": [
-                {
-                    "name": "启动游戏",
-                    "enabled": true
-                },
-                {
-                    "name": "商店购买",
-                    "enabled": true,
-                    "option": {
-                        "晨星商店": "Yes"
-                    }
-                }
-            ]
-        },
-        {
-            "name": "小号预设",
-            "task": [
-                {
-                    "name": "启动游戏",
-                    "enabled": true
-                },
-                {
-                    "name": "商店购买",
-                    "enabled": true,
-                    "option": {
-                        "晨星商店": "No"
-                    }
-                }
-            ]
-        }
+    "import": [
+        "preset/MainAccount",
+        "preset/SideAccount"
     ]
 }

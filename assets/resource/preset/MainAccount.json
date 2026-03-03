@@ -1,0 +1,21 @@
+{
+    "preset": [
+        {
+            "name": "大号预设",
+            "description": "大号预设好需要执行的任务及对应的选项",
+            "task": [
+                {
+                    "name": "启动游戏",
+                    "enabled": true
+                },
+                {
+                    "name": "商店购买",
+                    "enabled": true,
+                    "option": {
+                        "晨星商店": "Yes"
+                    }
+                }
+            ]
+        }
+    ]
+}
