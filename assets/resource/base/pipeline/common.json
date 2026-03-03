@@ -40,7 +40,8 @@
         },
         "action": {
             "type": "Click"
-        }
+        },
+        "post_delay": 1000
     },
     // 返回家园主页面
     "ReturnHomePage": {
@@ -62,8 +63,32 @@
         "action": {
             "type": "Click"
         },
-        "max_hit": 2,
-        "post_delay": 2000
+        "max_hit": 1,
+        "post_delay": 3000
+    },
+    "NotePage": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    3,
+                    1147,
+                    714,
+                    136
+                ],
+                "template": [
+                    "note1.png",
+                    "note2.png",
+                    "note_hint1.png",
+                    "note_hint2.png"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "max_hit": 1,
+        "post_delay": 3000
     },
     // 向左划动
     "SwipeLeft": {

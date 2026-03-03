@@ -1,0 +1,261 @@
+{
+    "Material": {
+        "next": [
+            "[JumpBack]LeaveCurrentPage",
+            "[JumpBack]CloseGift",
+            "[JumpBack]NotePage",
+            "OpenMeterial"
+        ]
+    },
+    "OpenMeterial": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [13,910,405,232],
+                "expected": [
+                    "素材"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "[JumpBack]Iron", 
+            "[JumpBack]Gold",
+            "[JumpBack]Monster",
+            "[JumpBack]Gravel",
+            "LeaveCurrentPage"  // 退出素材页面
+        ],
+        "post_delay": 2000
+    },
+    "Iron": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    23,
+                    445,
+                    327,
+                    162
+                ],
+                "expected": [
+                    "铁石矿洞"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "[JumpBack]CloseQuickButton",  // 关闭快捷开凿
+            "[JumpBack]MagnifyingGlass",  // 识别放大镜
+            "[JumpBack]DigIron",
+            "LeaveCurrentPage"
+        ],
+        "enabled": false,
+        "post_delay": 2000,
+        "max_hit": 1  // 只进一次页面
+    },
+    "Gold": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi":[
+                    378,
+                    446,
+                    324,
+                    159
+                ],
+                "expected": [
+                    "黄金矿洞"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "[JumpBack]CloseQuickButton",  // 关闭快捷开凿
+            "[JumpBack]MagnifyingGlass",  // 识别放大镜
+            "[JumpBack]DigGold",
+            "LeaveCurrentPage"
+        ],
+        "enabled": false,
+        "post_delay": 2000,
+        "max_hit": 1  // 只进一次页面
+    },
+    "Monster": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi":[
+                    24,
+                    954,
+                    326,
+                    154
+                ],
+                "expected": [
+                    "怪物洞窟"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "[JumpBack]CloseQuickButton",  // 关闭快捷开凿
+            "[JumpBack]MagnifyingGlass",  // 识别放大镜
+            "[JumpBack]DigMonster",
+            "LeaveCurrentPage"
+        ],
+        "enabled": false,
+        "post_delay": 2000,
+        "max_hit": 1 // 只进一次页面
+    },
+    "Gravel": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi":[
+                    379,
+                    952,
+                    323,
+                    157
+                ],
+                "expected": [
+                    "砂石矿洞"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "[JumpBack]CloseQuickButton",  // 关闭快捷开凿
+            "[JumpBack]MagnifyingGlass",  // 识别放大镜
+            "[JumpBack]DigGravel",
+            "LeaveCurrentPage"
+        ],
+        "enabled": false,
+        "post_delay": 2000,
+        "max_hit": 1  // 只进一次页面
+    },
+    "CloseQuickButton": {
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "roi": [261,1032,108,48],
+                                "expected": [
+                                    "快捷"
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "recognition": {
+                            "type": "OCR",
+                            "param": {
+                                "roi": [370,1034,88,44],
+                                "expected": [
+                                    "开"
+                                ]
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [378,1040,73,30]
+            }
+        },
+        "post_delay": 500
+    },
+    "MagnifyingGlass": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [271,832,181,181],
+                "template": [
+                    "magnifying_glass.png"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_delay": 5000
+    },
+    "DigIron": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [271,832,181,181],
+                "template": [
+                    "iron_hammer.png"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_delay": 2000,
+        "max_hit": 10  // 默认10次挖矿
+    },
+    "DigGold": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [271,832,181,181],
+                "template": [
+                    "gold_pickaxe.png"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_delay": 2000,
+        "max_hit": 10  // 默认10次挖矿
+    },
+    "DigMonster": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [271,832,181,181],
+                "template": [
+                    "monster_boxing.png"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_delay": 2000,
+        "max_hit": 10  // 默认10次挖矿
+    },
+    "DigGravel": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [271,832,181,181],
+                "template": [
+                    "gravel_shovel.png"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_delay": 2000,
+        "max_hit": 10  // 默认10次挖矿
+    }
+}

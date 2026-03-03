@@ -51,12 +51,20 @@
             "option": [
                 "晨星商店"
             ]
+        },
+        {
+            "name": "使用素材",
+            "entry": "Material",
+            "option": [
+                "选择素材"
+            ]
         }
     ],
     "option": {
         "晨星商店": {
             "type": "switch",
             "description": "决定是否购买需要晨星的商品",
+            "default_case": "Yes",
             "cases": [
                 {
                     "name": "Yes",
@@ -91,6 +99,46 @@
                         },
                         "TreasureSlot9": {
                             "enabled": false
+                        }
+                    }
+                }
+            ]
+        },
+        "选择素材": {
+            "type": "select",
+            "description": "选择素材种类",
+            "label": "选择素材",
+            "default_case": "金矿",
+            "cases": [
+                {
+                    "name": "铁矿",
+                    "pipeline_override": {
+                        "Iron": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "金矿",
+                    "pipeline_override": {
+                        "Gold": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "精华",
+                    "pipeline_override": {
+                        "Monster": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "砂矿",
+                    "pipeline_override": {
+                        "Gravel": {
+                            "enabled": true
                         }
                     }
                 }
