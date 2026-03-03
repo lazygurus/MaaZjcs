@@ -47,7 +47,7 @@
         },
         {
             "name": "商店购买",
-            "entry": "Buy",
+            "entry": "Store",
             "option": [
                 "晨星商店"
             ]

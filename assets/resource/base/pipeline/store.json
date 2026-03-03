@@ -1,5 +1,5 @@
 {
-    "Buy": {
+    "Store": {
         "next": [
             "[JumpBack]LeaveCurrentPage",
             "[JumpBack]CloseGift",
@@ -40,7 +40,7 @@
             "Groceries"  // 先买杂货商店
         ],
         "on_error": [
-            "Buy"  // 如果没能进入杂货店页面就重新来
+            "Store"  // 如果没能进入杂货店页面就重新来
         ]
     },
     "Groceries": {
