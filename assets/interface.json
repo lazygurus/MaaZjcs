@@ -58,6 +58,13 @@
             "option": [
                 "选择素材"
             ]
+        },
+        {
+            "name": "竞技场",
+            "entry": "Arena",
+            "option": [
+                "挑战次数"
+            ]
         }
     ],
     "option": {
@@ -143,6 +150,23 @@
                     }
                 }
             ]
+        },
+        "挑战次数": {
+            "type": "input",
+            "label": "挑战次数",
+            "description": "选择挑战次数",
+            "inputs": [
+                {
+                    "name": "次数",
+                    "pipeline_type": "int",
+                    "default": "3"
+                }
+            ],
+            "pipeline_override": {
+                "SelectAttackSlot": {
+                    "max_hit": "{次数}"
+                }
+            }
         }
     },
     "import": [
