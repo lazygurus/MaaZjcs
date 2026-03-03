@@ -1,0 +1,44 @@
+{
+    "StartGame": {
+        "recognition": {
+            "param": {
+                "template": [
+                    "icon_bilibili.png"
+                ]
+            }
+        }
+    },
+    "HomeLoading": {
+        "recognition": {
+            "param": {
+                "template": [
+                    "home_icon_bilibili.png"
+                ]
+            }
+        }
+    },
+    "Login": {
+        "recognition": {
+            "param": {
+                "roi": [
+                    68,
+                    573,
+                    585,
+                    204
+                ]
+            }
+        }
+    },
+    "WaitLoginGone": {
+        "recognition": {
+            "param": {
+                "roi": [
+                    68,
+                    573,
+                    585,
+                    204
+                ]
+            }
+        }
+    }
+}
