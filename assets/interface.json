@@ -29,14 +29,7 @@
         {
             "name": "官服",
             "path": [
-                "./resource/base"
-            ]
-        },
-        {
-            "name": "B 服",
-            "path": [
-                "./resource",
-                "./resource/bilibili"  // 后加载的bilibili资源会覆盖前加载的base资源
+                "./resource"
             ]
         }
     ],
