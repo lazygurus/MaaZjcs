@@ -29,7 +29,14 @@
         {
             "name": "官服",
             "path": [
-                "./resource"
+                "./resource/base"
+            ]
+        },
+        {
+            "name": "B 服",
+            "path": [
+                "./resource/base",
+                "./resource/bilbili"
             ]
         }
     ],
