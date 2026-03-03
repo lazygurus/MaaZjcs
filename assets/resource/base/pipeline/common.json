@@ -1,0 +1,145 @@
+{
+    // 关闭礼包弹窗
+    "CloseGift": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [158,521,404,75],
+                "expected": [
+                    "礼包"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",  // 点击空白区域关闭礼包弹窗
+            "param": {
+                "target": [
+                    35,
+                    101,
+                    163,
+                    169
+                ]
+            }
+        }
+    },
+    // 离开当前页面
+    "LeaveCurrentPage": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    15,1174,120,96
+                ],
+                "template": [
+                    "leave_button1.png",
+                    "leave_button2.png",
+                    "leave_button3.png",
+                    "leave_button4.png"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    // 返回家园主页面
+    "ReturnHomePage": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    3,
+                    1147,
+                    714,
+                    136
+                ],
+                "template": [
+                    "home_button1.png",
+                    "home_button2.png"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "SearchLeft"  // 返回家园主页后，向左滑动搜索商店
+        ],
+        "post_delay": 5000
+    },
+    // 向左划动
+    "SwipeLeft": {
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "begin": [
+                    237,
+                    598,
+                    43,
+                    53
+                ],
+                "end": [
+                    369,
+                    596,
+                    43,
+                    53
+                ]
+            }
+        },
+        "post_delay": 2000
+    },
+    // 向右划动
+    "SwipeRight": {
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "begin": [
+                    369,
+                    596,
+                    43,
+                    53
+                ],
+                "end": [
+                    237,
+                    598,
+                    43,
+                    53
+                ]
+            }
+        },
+        "post_delay": 2000
+    },
+    // 主页的左边缘
+    "LeftEdge": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": [
+                    "airship1.png",
+                    "airship2.png",
+                    "airship3.png"
+                ]
+            }
+        },
+        "next": [
+            "SearchRight"
+        ]
+    },
+    // 主页的右边缘
+    "RightEdge": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": [
+                    "fireplace1.png",
+                    "snow_fireplace1.png",
+                    "snow_fireplace2.png",
+                    "snow_fireplace3.png"
+                ]
+            }
+        },
+        "next": [
+            "SearchLeft"
+        ]
+    }
+}

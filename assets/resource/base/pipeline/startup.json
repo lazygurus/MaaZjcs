@@ -13,7 +13,7 @@
             "[JumpBack]CloseAnnouncement",
             "[JumpBack]EnterGame",
             "[JumpBack]CloseGift",
-            "HomePage"  // 游戏启动结束，进入主页面
+            "ReturnHomePage"  // 游戏启动结束，进入主页面
         ]
     },
     "StartGame": {
@@ -39,7 +39,7 @@
             "[JumpBack]CloseAnnouncement",
             "[JumpBack]EnterGame",
             "[JumpBack]CloseGift",
-            "HomePage"  // 游戏启动结束，进入主页面
+            "ReturnHomePage"  // 游戏启动结束，进入主页面
         ]
     },
     "HomeLoading": {
@@ -53,7 +53,7 @@
                     154
                 ],
                 "template": [
-                    "homeicon.png"
+                    "home_icon.png"
                 ]
             }
         },
@@ -235,44 +235,6 @@
             "type": "Click"
         }
     },
-    "CloseGift": {
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "roi": [158,521,404,75],
-                "expected": [
-                    "礼包"
-                ]
-            }
-        },
-        "action": {
-            "type": "Click",  // 点击空白区域关闭礼包弹窗
-            "param": {
-                "target": [
-                    35,
-                    101,
-                    163,
-                    169
-                ]
-            }
-        }
-    },
-    "HomePage": {
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "roi": [
-                    291,
-                    1148,
-                    142,
-                    135
-                ],
-                "expected": [
-                    "家园"
-                ]
-            }
-        }
-    },
     "Shutdown": {
         "action": {
             "type": "StopApp",
@@ -291,7 +253,7 @@
                     151,
                     154
                 ],
-                "template": "homeicon.png"
+                "template": "home_icon.png"
             }
         },
         "inverse": true
