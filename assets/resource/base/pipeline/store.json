@@ -3,7 +3,8 @@
         "next": [
             "[JumpBack]LeaveCurrentPage",
             "[JumpBack]CloseGift",
-            "ReturnHomePage"
+            "[JumpBack]ReturnHomePage",
+            "SearchLeft"
         ]
     },
     "SearchLeft": {

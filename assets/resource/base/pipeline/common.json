@@ -62,10 +62,8 @@
         "action": {
             "type": "Click"
         },
-        "next": [
-            "SearchLeft"  // 返回家园主页后，向左滑动搜索商店
-        ],
-        "post_delay": 5000
+        "max_hit": 2,
+        "post_delay": 2000
     },
     // 向左划动
     "SwipeLeft": {
