@@ -1,0 +1,495 @@
+{
+    "Buy": {
+        "next": [
+            "[JumpBack]LeaveCurrentPage",
+            "[JumpBack]CloseGift",
+            "ReturnHomePage"
+        ]
+    },
+    "SearchLeft": {
+        "next": [
+            "OpenStore",
+            "LeftEdge",
+            "[JumpBack]SwipeLeft"
+        ]
+    },
+    "SearchRight": {
+        "next": [
+            "OpenStore",
+            "RightEdge",
+            "[JumpBack]SwipeRight"
+        ]
+    },
+    "OpenStore": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [4,659,716,190],
+                "template": [
+                    "store/store1.png",
+                    "store/store2.png",
+                    "store/store3.png",
+                    "store/store4.png"
+                ]
+            }
+        },
+        "action": "Click",
+        "post_delay": 2000,
+        "next": [
+            "Groceries"  // 先买杂货商店
+        ],
+        "on_error": [
+            "Buy"  // 如果没能进入杂货店页面就重新来
+        ]
+    },
+    "Groceries": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    146,
+                    1171,
+                    566,
+                    96
+                ],
+                "expected": [
+                    "杂货"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_delay": 1000,
+        "next": [
+            "GroceriesPurchase"
+        ]
+    },
+    "GroceriesPurchase": {
+        "next": [
+            "[JumpBack]GrocerySlot1",
+            "[JumpBack]GrocerySlot2",
+            "[JumpBack]GrocerySlot3",
+            "[JumpBack]GrocerySlot4",
+            "[JumpBack]GrocerySlot5",
+            "[JumpBack]GrocerySlot6",
+            "[JumpBack]GrocerySlot7",
+            "[JumpBack]GrocerySlot8",
+            "[JumpBack]GrocerySlot9",
+            "StopGroceryRefresh",
+            "[JumpBack]GroceriesRefresh"
+        ]
+    },
+    "StopGroceryRefresh": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [578,99,107,39],
+                "expected": [
+                    "(?<![0-9.])8万" // 严格匹配8万
+                ]
+            }
+        },
+        "next": [
+            "Treasure"  // 购买完杂货商店之后跳转到宝库商店购买
+        ]
+    },
+    "GroceriesRefresh": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    449,
+                    82,
+                    253,
+                    71
+                ],
+                "expected": [
+                    "刷新"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_delay": 2000
+    },
+    "Treasure": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    146,
+                    1171,
+                    566,
+                    96
+                ],
+                "expected": [
+                    "宝库"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_delay": 1000,
+        "next": [
+            "TreasurePurchase"
+        ]
+    },
+    "TreasurePurchase": {
+        "next": [
+            "[JumpBack]TreasureSlot1",
+            "[JumpBack]TreasureSlot2",
+            "[JumpBack]TreasureSlot3",
+            "[JumpBack]TreasureSlot4",
+            "[JumpBack]TreasureSlot5",  // 跳过第六项精锻石
+            "[JumpBack]TreasureSlot7",
+            "[JumpBack]TreasureSlot8",
+            "[JumpBack]TreasureSlot9",
+            "LeaveCurrentPage"  // 买完之后离开商店页面
+        ]
+    },
+    "GrocerySlot1": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [100,273,66,45],
+                "expected": [
+                    "售罄"
+                ]
+            }
+        },
+        "inverse": true,
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [72,394,120,30]
+            }
+        },
+        "post_delay": 1000
+    },
+    "GrocerySlot2": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [335,274,58,43],
+                "expected": [
+                    "售罄"
+                ]
+            }
+        },
+        "inverse": true,
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [303,394,115,28]
+            }
+        },
+        "post_delay": 1000
+    },
+    "GrocerySlot3": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [565,278,56,36],
+                "expected": [
+                    "售罄"
+                ]
+            }
+        },
+        "inverse": true,
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [526,393,130,32]
+            }
+        },
+        "post_delay": 1000
+    },
+    "GrocerySlot4": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [100,558,67,44],
+                "expected": [
+                    "售罄"
+                ]
+            }
+        },
+        "inverse": true,
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [71,677,121,29]
+            }
+        },
+        "post_delay": 1000
+    },
+    "GrocerySlot5": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [331,563,64,37],
+                "expected": [
+                    "售罄"
+                ]
+            }
+        },
+        "inverse": true,
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [305,674,114,33]
+            }
+        },
+        "post_delay": 1000
+    },
+    "GrocerySlot6": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [561,563,64,35],
+                "expected": [
+                    "售罄"
+                ]
+            }
+        },
+        "inverse": true,
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [541,675,101,32]
+            }
+        },
+        "post_delay": 1000
+    },
+    "GrocerySlot7": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [103,843,60,40],
+                "expected": [
+                    "售罄"
+                ]
+            }
+        },
+        "inverse": true,
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [83,955,101,34]
+            }
+        },
+        "post_delay": 1000
+    },
+    "GrocerySlot8": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [336,843,53,40],
+                "expected": [
+                    "售罄"
+                ]
+            }
+        },
+        "inverse": true,
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [304,958,113,28]
+            }
+        },
+        "post_delay": 1000
+    },
+    "GrocerySlot9": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [564,841,57,41],
+                "expected": [
+                    "售罄"
+                ]
+            }
+        },
+        "inverse": true,
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [534,958,111,30]
+            }
+        },
+        "post_delay": 1000
+    },
+    "TreasureSlot1": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [100,273,66,45],
+                "expected": [
+                    "售罄"
+                ]
+            }
+        },
+        "inverse": true,
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [72,394,120,30]
+            }
+        },
+        "post_delay": 1000
+    },
+    "TreasureSlot2": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [335,274,58,43],
+                "expected": [
+                    "售罄"
+                ]
+            }
+        },
+        "inverse": true,
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [303,394,115,28]
+            }
+        },
+        "post_delay": 1000
+    },
+    "TreasureSlot3": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [565,278,56,36],
+                "expected": [
+                    "售罄"
+                ]
+            }
+        },
+        "inverse": true,
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [526,393,130,32]
+            }
+        },
+        "post_delay": 1000
+    },
+    "TreasureSlot4": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [100,558,67,44],
+                "expected": [
+                    "售罄"
+                ]
+            }
+        },
+        "inverse": true,
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [71,677,121,29]
+            }
+        },
+        "post_delay": 1000
+    },
+    "TreasureSlot5": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [331,563,64,37],
+                "expected": [
+                    "售罄"
+                ]
+            }
+        },
+        "inverse": true,
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [305,674,114,33]
+            }
+        },
+        "post_delay": 1000
+    },
+    "TreasureSlot6": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [561,563,64,35],
+                "expected": [
+                    "售罄"
+                ]
+            }
+        },
+        "inverse": true,
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [541,675,101,32]
+            }
+        },
+        "post_delay": 1000
+    },
+    "TreasureSlot7": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [103,843,60,40],
+                "expected": [
+                    "售罄"
+                ]
+            }
+        },
+        "inverse": true,
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [83,955,101,34]
+            }
+        },
+        "post_delay": 1000
+    },
+    "TreasureSlot8": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [336,843,53,40],
+                "expected": [
+                    "售罄"
+                ]
+            }
+        },
+        "inverse": true,
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [304,958,113,28]
+            }
+        },
+        "post_delay": 1000
+    },
+    "TreasureSlot9": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [564,841,57,41],
+                "expected": [
+                    "售罄"
+                ]
+            }
+        },
+        "inverse": true,
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [534,958,111,30]
+            }
+        },
+        "post_delay": 1000
+    }
+}

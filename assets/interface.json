@@ -44,6 +44,91 @@
         {
             "name": "启动游戏",
             "entry": "StartUp"
+        },
+        {
+            "name": "商店购买",
+            "entry": "Buy",
+            "option": [
+                "晨星商店"
+            ]
+        }
+    ],
+    "option": {
+        "晨星商店": {
+            "type": "switch",
+            "description": "决定是否购买需要晨星的商品",
+            "cases": [
+                {
+                    "name": "Yes",
+                    "label": "购买",
+                    "description": "用晨星购买商品"
+                },
+                {
+                    "name": "No",
+                    "label": "不购买",
+                    "description": "不用晨星购买商品",
+                    "pipeline_override": {
+                        "TreasureSlot2": {
+                            "enabled": false
+                        },
+                        "TreasureSlot3": {
+                            "enabled": false
+                        },
+                        "TreasureSlot4": {
+                            "enabled": false
+                        },
+                        "TreasureSlot5": {
+                            "enabled": false
+                        },
+                        "TreasureSlot6": {
+                            "enabled": false
+                        },
+                        "TreasureSlot7": {
+                            "enabled": false
+                        },
+                        "TreasureSlot8": {
+                            "enabled": false
+                        },
+                        "TreasureSlot9": {
+                            "enabled": false
+                        }
+                    }
+                }
+            ]
+        }
+    },
+    "preset": [
+        {
+            "name": "大号预设",
+            "task": [
+                {
+                    "name": "启动游戏",
+                    "enabled": true
+                },
+                {
+                    "name": "商店购买",
+                    "enabled": true,
+                    "option": {
+                        "晨星商店": "Yes"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "小号预设",
+            "task": [
+                {
+                    "name": "启动游戏",
+                    "enabled": true
+                },
+                {
+                    "name": "商店购买",
+                    "enabled": true,
+                    "option": {
+                        "晨星商店": "No"
+                    }
+                }
+            ]
         }
     ]
 }
