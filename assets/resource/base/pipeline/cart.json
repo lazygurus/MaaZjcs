@@ -1,0 +1,119 @@
+{
+    // 小推车
+    "Cart": {
+        "next": [
+            "[JumpBack]LeaveCurrentPage",
+            "[JumpBack]CloseGift",
+            "[JumpBack]HomePage",
+            "SearchCartLeft"
+        ]
+    },
+    "SearchCartLeft": {
+        "next": [
+            "OpenCart",
+            "LeftEdgeInSearchCart",
+            "[JumpBack]SwipeLeft"
+        ]
+    },
+    "SearchCartRight": {
+        "next": [
+            "OpenCart",
+            "RightEdgeInSearchCart",
+            "[JumpBack]SwipeRight"
+        ]
+    },
+    "OpenCart": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": [
+                    "empty_light_cart.png",
+                    "empyt_snow_light_cart.png",
+                    "full_night_cart.png"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "[JumpBack]QuickReceiveCartPrize",
+            "[JumpBack]ReceiveCartPrize",
+            "[JumpBack]CartPage",
+            "End"
+        ],
+        "post_delay": 2000
+    },
+    "LeftEdgeInSearchCart": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": [
+                    "airship1.png",
+                    "airship2.png",
+                    "airship3.png"
+                ]
+            }
+        },
+        "next": [
+            "SearchCartRight"
+        ]
+    },
+    "RightEdgeInSearchCart": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": [
+                    "fireplace1.png",
+                    "snow_fireplace1.png",
+                    "snow_fireplace2.png",
+                    "snow_fireplace3.png"
+                ]
+            }
+        }
+    },
+    "CartPage": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "小推车"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [308,1184,110,49]
+            }
+        }
+    },
+    "ReceiveCartPrize": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "一键领取"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "max_hit": 1
+    },
+    "QuickReceiveCartPrize": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "获得奖励"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "max_hit": 1
+    }
+}

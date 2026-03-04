@@ -1,0 +1,115 @@
+{
+    "Fruit": {
+        "next": [
+            "[JumpBack]LeaveCurrentPage",
+            "[JumpBack]CloseGift",
+            "[JumpBack]NotePage",
+            "ExploreFruitPage"
+        ]
+    },
+    "ExploreFruitPage": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [5,519,413,170],
+                "expected": [
+                    "地图探索"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "[JumpBack]ReceiveFruitInExplorePage",
+            "DepartForUseFruits"
+        ],
+        "post_delay": 2000
+    },
+    "ReceiveFruitInExplorePage": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [33,543,161,130],
+                "expected": [
+                    "可领取"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "DepartForUseFruits": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [497,604,175,77],
+                "expected": [
+                    "前往"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "ConfirmDepartForUseFruits"
+        ],
+        "post_delay": 2000
+    },
+    "ConfirmDepartForUseFruits": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "确定"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "[JumpBack]Loading",
+            "UseFruit"
+        ],
+        "post_delay": 3000
+    },
+    "UseFruit": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [483,1168,221,100],
+                "expected": [
+                    "探索"
+                ],
+                "index": 0
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "[JumpBack]ConfirmUseFruit",
+            "UseFruit",
+            "LeaveCurrentPage"
+        ],
+        "max_hit": 3,  // 初始默认三次
+        "post_delay": 1000
+    },
+    "ConfirmUseFruit": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "确定"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_delay": 1000
+    }
+}

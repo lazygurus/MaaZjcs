@@ -27,7 +27,7 @@
         "enabled": false,
         "next": [
             "[JumpBack]NotePage",
-            "[JumpBack]WorldExplorePage",
+            "[JumpBack]ExploreResourcePage",
             "ChooseGold"
         ],
         "max_hit": 1
@@ -36,7 +36,7 @@
         "enabled": false,
         "next": [
             "[JumpBack]NotePage",
-            "[JumpBack]WorldExplorePage",
+            "[JumpBack]ExploreResourcePage",
             "ChooseIron"
         ],
         "max_hit": 1
@@ -45,10 +45,24 @@
         "enabled": false,
         "next": [
             "[JumpBack]NotePage",
-            "[JumpBack]WorldExplorePage",
+            "[JumpBack]ExploreResourcePage",
             "ChooseGravel"
         ],
         "max_hit": 1   
+    },
+    "ExploreResourcePage": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [5,519,413,170],
+                "expected": [
+                    "地图探索"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
     },
     "ChooseLowerFloor": {
         "recognition": {
@@ -209,20 +223,6 @@
         ],
         "max_hit": 1
     },
-    "WorldExplorePage": {
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "roi": [5,519,413,170],
-                "expected": [
-                    "地图探索"
-                ]
-            }
-        },
-        "action": {
-            "type": "Click"
-        }
-    },
     "ChooseGold": {
         "recognition": {
             "type": "TemplateMatch",
@@ -238,7 +238,7 @@
             "type": "Click"
         },
         "next": [
-            "Explore"
+            "DepartForResource"
         ]
     },
     "ChooseIron": {
@@ -256,7 +256,7 @@
             "type": "Click"
         },
         "next": [
-            "Explore"
+            "DepartForResource"
         ]
     },
     "ChooseGravel": {
@@ -274,10 +274,10 @@
             "type": "Click"
         },
         "next": [
-            "Explore"
+            "DepartForResource"
         ]
     },
-    "Explore": {
+    "DepartForResource": {
         "recognition": {
             "type": "OCR",
             "param": {
@@ -291,11 +291,11 @@
             "type": "Click"
         },
         "next": [
-            "EnterWorld"
+            "ConfirmDepartForResource"
         ],
         "post_delay": 2000
     },
-    "EnterWorld": {
+    "ConfirmDepartForResource": {
         "recognition": {
             "type": "OCR",
             "param": {

@@ -1,0 +1,262 @@
+{
+    "Tree": {
+        "next": [
+            "[JumpBack]LeaveCurrentPage",
+            "[JumpBack]CloseGift",
+            "[JumpBack]HomePage",
+            "SearchTreeLeft"
+        ]
+    },
+    "SearchTreeLeft": {
+        "next": [
+            "ClickTree",
+            "LeftEdgeInSearchTree",
+            "[JumpBack]SwipeLeft"
+        ]
+    },
+    "SearchTreeRight": {
+        "next": [
+            "ClickTree",
+            "RightEdgeInSearchTree",
+            "[JumpBack]SwipeRight"
+        ]
+    },
+    "LeftEdgeInSearchTree": { 
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": [
+                    "airship1.png",
+                    "airship2.png",
+                    "airship3.png"
+                ]
+            }
+        },
+        "next": [
+            "SearchTreeRight"
+        ]
+    },
+    "RightEdgeInSearchTree": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": [
+                    "fireplace1.png",
+                    "snow_fireplace1.png",
+                    "snow_fireplace2.png",
+                    "snow_fireplace3.png"
+                ]
+            }
+        },
+        "next": [
+            "SearchTreeLeft"
+        ]
+    },
+    "ClickTree": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": [
+                    "light_tree.png",
+                    "night_tree.png",
+                    "snow_light_tree.png",
+                    "snow_night_tree.png"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target_offset": [0,-200,0,0]
+            }
+        },
+        "next": [
+            "ClickTree",
+            "PetWishPage"
+        ],
+        "max_hit": 2,
+        "post_delay": 3000
+    },
+    "PetWishPage": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [144,1175,565,91],
+                "expected": [
+                    "结缘"
+                ],
+                "index": 0
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "WishPet",
+            "LeaveCurrentPage"
+        ]
+    },
+    "WishPet": {
+        "enabled": true,
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [68,1052,594,97],
+                "expected": [
+                    "结缘1次"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "WishPet",
+            "CancelWishPet"
+        ],
+        "post_delay": 1000
+    },
+    "CancelWishPet": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [175,753,113,40],
+                "expected": [
+                    "取消"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "[JumpBack]GetWishPetPrize",
+            "ExchangePetResourcePage",
+            "LeaveCurrentPage"
+        ]
+    },
+    "GetWishPetPrize": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [24,129,133,126],
+                "template": [
+                    "red_lint.png"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "ReceivePetResource"
+        ]
+    },
+    "ExchangePetResourcePage": {
+        "enabled": true,
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [470,1205,54,25],
+                "expected": [
+                    "兌換"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "[JumpBack]SwipeExchangePetResourcePageDown",
+            "ExchangePetResource"
+        ],
+        "post_delay": 2000
+
+    },
+    "SwipeExchangePetResourcePageDown": {
+        "next": [
+            "SwipeUp"
+        ],
+        "max_hit": 1
+    },
+    "ExchangePetResource": {
+        "next": [
+            "[JumpBack]PurplePetResourceNotSoldout",
+            "[JumpBack]OrangePetResourceNotSoldout",
+            "LeaveCurrentPage"
+        ]
+    },
+    "PurplePetResourceNotSoldout": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                // roi 在 interface.json 中给出
+                "expected": [
+                    "售罄"
+                ]
+            }
+        },
+        "inverse": true,
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": true  // target 也在interface.json中给出
+            }
+        },
+        "next": [
+            "ConfirmPurchasePetResource"
+        ]
+    },
+    "OrangePetResourceNotSoldout": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                // roi 在 interface.json 中给出
+                "expected": [
+                    "售罄"
+                ]
+            }
+        },
+        "inverse": true,
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": true  // target 也在interface.json中给出
+            }
+        },
+        "next": [
+            "ConfirmPurchasePetResource"
+        ]
+    },
+    "ConfirmPurchasePetResource": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [443,717,111,38],
+                "expected": [
+                    "确定"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "ReceivePetResource"
+        ]
+    },
+    "ReceivePetResource": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [223,338,275,72],
+                "expected": [
+                    "获得奖励"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    }
+}

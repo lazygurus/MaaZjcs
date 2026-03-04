@@ -75,6 +75,21 @@
             ]
         },
         {
+            "name": "领小推车",
+            "entry": "Cart"
+        },
+        {
+            "name": "命运之树",
+            "entry": "Tree",
+            "option": [
+                "购买宠物素材"
+            ]
+        },
+        {
+            "name": "使用命运果实",
+            "entry": "Fruit"
+        },
+        {
             "name": "识别当前页面文字",
             "entry": "OcrCurrentPage"
         },
@@ -241,6 +256,128 @@
                     }
                 }
             }
+        },
+        "购买宠物素材": {
+            "type": "switch",
+            "description": "是否购买宠物素材",
+            "label": "购买宠物素材",
+            "default_case": "No",
+            "cases": [
+                {
+                    "name": "Yes",
+                    "pipeline_override": {
+                        "ExchangePetResourcePage": {
+                            "enabled": true
+                        }
+                    },
+                    "option": [
+                        "选择宠物素材"
+                    ]
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {
+                        "ExchangePetResourcePage": {
+                            "enabled": false
+                        }
+                    }
+                }
+            ]
+        },
+        "选择宠物素材": {
+            "type": "select",
+            "description": "选择宠物素材",
+            "label": "选择宠物素材",
+            "default_case": "羊毛",
+            "cases": [
+                {
+                    "name": "羊毛",
+                    "pipeline_override": {
+                        "PurplePetResourceNotSoldout": {
+                            "recognition": {
+                                "param": {
+                                    "roi": [30,898,204,255]
+                                }
+                            },
+                            "action": {
+                                "param": {
+                                    "target": [98,1101,70,32]
+                                }
+                            }
+                        },
+                        "OrangePetResourceNotSoldout": {
+                            "recognition": {
+                                "param": {
+                                    "roi": [28,614,208,257]
+                                }
+                            },
+                            "action": {
+                                "param": {
+                                    "target": [100,818,68,35]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "鸡蛋",
+                    "pipeline_override": {
+                        "PurplePetResourceNotSoldout": {
+                            "recognition": {
+                                "param": {
+                                    "roi": [258,899,202,249]
+                                }
+                            },
+                            "action": {
+                                "param": {
+                                    "target": [329,1103,73,30]
+                                }
+                            }
+                        },
+                        "OrangePetResourceNotSoldout": {
+                            "recognition": {
+                                "param": {
+                                    "roi": [257,615,206,254]
+                                }
+                            },
+                            "action": {
+                                "param": {
+                                    "target": [331,820,69,30]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "精油",
+                    "pipeline_override": {
+                        "PurplePetResourceNotSoldout": {
+                            "recognition": {
+                                "param": {
+                                    "roi": [486,616,208,254]
+                                }
+                            },
+                            "action": {
+                                "param": {
+                                    "target": [560,820,68,31]
+                                }
+                            }
+                        },
+                        "OrangePetResourceNotSoldout": {
+                            "recognition": {
+                                "param": {
+                                    "roi": [488,335,203,252]
+                                }
+                            },
+                            "action": {
+                                "param": {
+                                    "target": [558,538,75,31]
+                                }
+                            }
+                        }
+                    }
+                }
+            ]
         }
     },
     "import": [
