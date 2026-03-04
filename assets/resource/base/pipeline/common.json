@@ -220,20 +220,20 @@
             "type": "Swipe",
             "param": {
                 "begin": [
-                    237,
-                    598,
-                    43,
-                    53
+                    250,
+                    600,
+                    15,
+                    15
                 ],
                 "end": [
-                    369,
-                    596,
-                    43,
-                    53
-                ]
+                    500,
+                    600,
+                    15,
+                    15
+                ],
+                "end_hold": 2000
             }
-        },
-        "post_delay": 2000
+        }
     },
     // 向右划动
     "SwipeRight": {
@@ -241,53 +241,60 @@
             "type": "Swipe",
             "param": {
                 "begin": [
-                    369,
-                    596,
-                    43,
-                    53
+                    500,
+                    600,
+                    15,
+                    15
                 ],
                 "end": [
-                    237,
-                    598,
-                    43,
-                    53
-                ]
+                    250,
+                    600,
+                    15,
+                    15
+                ],
+                "end_hold": 2000
             }
-        },
-        "post_delay": 2000
+        }
     },
-    // 主页的左边缘
-    "LeftEdge": {
-        "recognition": {
-            "type": "TemplateMatch",
+    "SwipeUp": {
+        "action": {
+            "type": "Swipe",
             "param": {
-                "template": [
-                    "airship1.png",
-                    "airship2.png",
-                    "airship3.png"
-                ]
+                "begin": [
+                    320,
+                    750,
+                    15,
+                    15
+                ],
+                "end": [
+                    320,
+                    350,
+                    15,
+                    15
+                ],
+                "end_hold": 2000
             }
-        },
-        "next": [
-            "SearchRight"
-        ]
+        }
     },
-    // 主页的右边缘
-    "RightEdge": {
-        "recognition": {
-            "type": "TemplateMatch",
+    "SwipeDown": {
+        "action": {
+            "type": "Swipe",
             "param": {
-                "template": [
-                    "fireplace1.png",
-                    "snow_fireplace1.png",
-                    "snow_fireplace2.png",
-                    "snow_fireplace3.png"
-                ]
+                "begin": [
+                    320,
+                    350,
+                    15,
+                    15
+                ],
+                "end": [
+                    320,
+                    750,
+                    15,
+                    15
+                ],
+                "end_hold": 2000
             }
-        },
-        "next": [
-            "SearchLeft"
-        ]
+        }
     },
     // 进入战斗
     "StartFight": {
