@@ -4,20 +4,20 @@
             "[JumpBack]LeaveCurrentPage",
             "[JumpBack]CloseGift",
             "[JumpBack]HomePage",
-            "SearchLeft"
+            "SearchStoreLeft"
         ]
     },
-    "SearchLeft": {
+    "SearchStoreLeft": {
         "next": [
             "OpenStore",
-            "LeftEdge",
+            "LeftEdgeInSearchStore",
             "[JumpBack]SwipeLeft"
         ]
     },
-    "SearchRight": {
+    "SearchStoreRight": {
         "next": [
             "OpenStore",
-            "RightEdge",
+            "RightEdgeInSearchStore",
             "[JumpBack]SwipeRight"
         ]
     },
@@ -41,6 +41,38 @@
         ],
         "on_error": [
             "Store"  // 如果没能进入杂货店页面就重新来
+        ]
+    },
+    "LeftEdgeInSearchStore": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": [
+                    "airship1.png",
+                    "airship2.png",
+                    "airship3.png"
+                ]
+            }
+        },
+        "next": [
+            "SearchStoreRight"
+        ]
+    },
+    // 主页的右边缘
+    "RightEdgeInSearchStore": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": [
+                    "fireplace1.png",
+                    "snow_fireplace1.png",
+                    "snow_fireplace2.png",
+                    "snow_fireplace3.png"
+                ]
+            }
+        },
+        "next": [
+            "SearchStoreLeft"
         ]
     },
     "Groceries": {
