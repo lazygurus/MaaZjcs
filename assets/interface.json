@@ -65,6 +65,22 @@
             "option": [
                 "挑战次数"
             ]
+        },
+        {
+            "name": "使用体力",
+            "entry": "Energy",
+            "option": [
+                "体力选择",
+                "体力使用次数"
+            ]
+        },
+        {
+            "name": "识别当前页面文字",
+            "entry": "OcrCurrentPage"
+        },
+        {
+            "name": "识别指定图片",
+            "entry": "RecognizePicture"
         }
     ],
     "option": {
@@ -165,6 +181,64 @@
             "pipeline_override": {
                 "SelectAttackSlot": {
                     "max_hit": "{次数}"
+                }
+            }
+        },
+        "体力选择": {
+            "type": "select",
+            "cases": [
+                {
+                    "name": "铁矿",
+                    "pipeline_override": {
+                        "IronByEnergy": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "金矿",
+                    "pipeline_override": {
+                        "GoldByEnergy": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "砂矿",
+                    "pipeline_override": {
+                        "GravelByEnergy": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "杀猪",
+                    "pipeline_override": {
+                        "PigByEnergy": {
+                            "enabled": true
+                        }
+                    }
+                }
+            ]
+        },
+        "体力使用次数": {
+            "type": "input",
+            "label": "体力使用次数",
+            "description": "选择体力使用次数",
+            "inputs": [
+                {
+                    "name": "次数",
+                    "pipeline_type": "string",
+                    "default": "6"
+                }
+            ],
+            "pipeline_override": {
+                "InputAutoCount": {
+                    "action": {
+                        "param": {
+                            "input_text": "{次数}"
+                        }
+                    }
                 }
             }
         }

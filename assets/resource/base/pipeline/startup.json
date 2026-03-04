@@ -13,7 +13,7 @@
             "[JumpBack]CloseAnnouncement",
             "[JumpBack]EnterGame",
             "[JumpBack]CloseGift",
-            "ReturnHomePage"  // 游戏启动结束，进入主页面
+            "HomePage"  // 游戏启动结束，进入主页面
         ]
     },
     "StartGame": {
@@ -39,7 +39,7 @@
             "[JumpBack]CloseAnnouncement",
             "[JumpBack]EnterGame",
             "[JumpBack]CloseGift",
-            "ReturnHomePage"  // 游戏启动结束，进入主页面
+            "HomePage"  // 游戏启动结束，进入主页面
         ]
     },
     "HomeLoading": {
@@ -89,26 +89,7 @@
             "StuckHandler"
         ]
     },
-    "Loading": {
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "expected": [
-                    "加载",
-                    "稍候",
-                    "资源清单",
-                    "初始化"
-                ]
-            }
-        },
-        "next": [
-            "WaitLoadingGone"
-        ],
-        "timeout": 120000,  // 2分钟加载时间
-        "on_error": [
-            "StuckHandler"
-        ]
-    },
+
     "DownLoading": {
         "recognition": {
             "type": "OCR",
@@ -327,55 +308,5 @@
             }
         },
         "inverse": true
-    },
-    "WaitLoadingGone": {
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "expected": [
-                    "加载",
-                    "稍候",
-                    "资源清单",
-                    "初始化"
-                ]
-            }
-        },
-        "inverse": true
-    },
-    "StuckHandler": {
-        "action": {
-            "type": "StopApp",
-            "param": {
-                "package": "com.leiting.zjcs"
-            }
-        },
-        "focus": {
-            "Node.Action.Starting": {
-                "content": "启动流程卡顿或超时，已关闭游戏",
-                "display": [
-                    "log",
-                    "toast"
-                ]
-            }
-        },
-        "next": [
-            "RestartGame"
-        ]
-    },
-    "RestartGame": {
-        "post_delay": 5000,
-        "next": [
-            "StartUp"
-        ],
-        "focus": {
-            "Node.Action.Starting": {
-                "content": "重启游戏中",
-                "display": [
-                    "log",
-                    "toast"
-                ]
-            }
-        },
-        "max_hit": 2
     }
 }

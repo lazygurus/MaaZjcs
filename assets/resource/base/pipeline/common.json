@@ -1,4 +1,84 @@
 {
+    // 通用的结束节点，无任何动作
+    "End": {
+        "action": {
+            "type": "DoNothing"
+        }
+    },
+    // 通用加载任务识别
+    "Loading": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "加载",
+                    "稍候",
+                    "资源清单",
+                    "初始化"
+                ]
+            }
+        },
+        "next": [
+            "WaitLoadingGone"
+        ],
+        "timeout": 120000,  // 2分钟加载时间
+        "on_error": [
+            "StuckHandler"
+        ]
+    },
+    // 等待加载任务完成
+    "WaitLoadingGone": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "加载",
+                    "稍候",
+                    "资源清单",
+                    "初始化"
+                ]
+            }
+        },
+        "inverse": true
+    },
+    // 处理卡顿或超时
+    "StuckHandler": {
+        "action": {
+            "type": "StopApp",
+            "param": {
+                "package": "com.leiting.zjcs"
+            }
+        },
+        "focus": {
+            "Node.Action.Starting": {
+                "content": "流程卡顿或超时，已关闭游戏",
+                "display": [
+                    "log",
+                    "toast"
+                ]
+            }
+        },
+        "next": [
+            "RestartGame"
+        ]
+    },
+    // 重启游戏
+    "RestartGame": {
+        "post_delay": 5000,
+        "next": [
+            "StartUp"
+        ],
+        "focus": {
+            "Node.Action.Starting": {
+                "content": "重启游戏",
+                "display": [
+                    "log",
+                    "toast"
+                ]
+            }
+        },
+        "max_hit": 2
+    },
     // 关闭礼包弹窗
     "CloseGift": {
         "recognition": {
@@ -22,6 +102,24 @@
             }
         }
     },
+    // 点击空白处关闭
+    "CloseByClickBlank": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "点击空白处关闭"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "Loading",
+            "End"
+        ]
+    },
     // 离开当前页面
     "LeaveCurrentPage": {
         "recognition": {
@@ -41,10 +139,14 @@
         "action": {
             "type": "Click"
         },
+        "next": [
+            "Loading",
+            "End"
+        ],
         "post_delay": 1000
     },
     // 返回家园主页面
-    "ReturnHomePage": {
+    "HomePage": {
         "recognition": {
             "type": "TemplateMatch",
             "param": {
@@ -81,6 +183,28 @@
                     "note2.png",
                     "note_hint1.png",
                     "note_hint2.png"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "max_hit": 1,
+        "post_delay": 3000
+    },
+    "WorldPage": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    3,
+                    1147,
+                    714,
+                    136
+                ],
+                "template": [
+                    "world1.png",
+                    "world2.png"
                 ]
             }
         },
@@ -164,5 +288,19 @@
         "next": [
             "SearchLeft"
         ]
+    },
+    // 进入战斗
+    "StartFight": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "开始战斗"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
     }
 }

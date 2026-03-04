@@ -1,0 +1,29 @@
+{
+    "OcrCurrentPage": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    ".*"
+                ]
+            }
+        }
+    },
+    "RecognizePicture": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": [
+                    "auto_icon1.png",
+                    "auto_icon2.png"
+                ]
+            }
+        },
+        "next": [
+            "RecognizePictureSuccess"
+        ]
+    },
+    "RecognizePictureSuccess": {
+        "action": "DoNothing"
+    }
+}

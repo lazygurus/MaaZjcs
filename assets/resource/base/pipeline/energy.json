@@ -1,0 +1,434 @@
+{
+    "Energy": {
+        "next": [
+            "[JumpBack]LeaveCurrentPage",
+            "[JumpBack]CloseGift",
+            "UseEnergy"
+        ]
+    },
+    "UseEnergy": {
+        "next": [
+            "[JumpBack]PigByEnergy", // 杀猪
+            "[JumpBack]GoldByEnergy",  // 挖金币
+            "[JumpBack]IronByEnergy",  // 挖铁
+            "[JumpBack]GravelByEnergy",  // 挖砂
+            "LeaveCurrentPage"
+        ]
+    },
+    "PigByEnergy": {
+        "enabled": false,
+        "next": [
+            "[JumpBack]WorldPage",
+            "ChooseLowerFloor"
+        ],
+        "max_hit": 1
+    },
+    "GoldByEnergy": {
+        "enabled": false,
+        "next": [
+            "[JumpBack]NotePage",
+            "[JumpBack]WorldExplorePage",
+            "ChooseGold"
+        ],
+        "max_hit": 1
+    },
+    "IronByEnergy": {
+        "enabled": false,
+        "next": [
+            "[JumpBack]NotePage",
+            "[JumpBack]WorldExplorePage",
+            "ChooseIron"
+        ],
+        "max_hit": 1
+    },
+    "GravelByEnergy": {
+        "enabled": false,
+        "next": [
+            "[JumpBack]NotePage",
+            "[JumpBack]WorldExplorePage",
+            "ChooseGravel"
+        ],
+        "max_hit": 1   
+    },
+    "ChooseLowerFloor": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [26,999,43,46],
+                "template": [
+                    "lower_floor.png"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "EnterForestCountry"
+        ]
+    },
+    "EnterForestCountry": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [1,235,202,315],
+                "expected": [
+                    "森之国"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "[JumpBack]Loading",
+            "OpenMap"
+        ]
+    },
+    "OpenMap": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [523,244,199,54],
+                "expected": [
+                    "\\(\\d+,\\d+\\)"  // 匹配任意坐标
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [562,135,116,89]
+            }
+        },
+        "next": [
+            "[JumpBack]FindInMap",
+            "[JumpBack]KillPig",
+            "[JumpBack]KillSlime",
+            "End"
+        ],
+        "post_delay": 2000
+    },
+    "FindInMap": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [560,35,152,192],
+                "expected": [
+                    "传送门"
+                ]
+            }
+        },
+        "next": [
+            "FindPig",
+            "[JumpBack]SwipeMapRight",
+            "[JumpBack]SwipeMapTop",
+            "[JumpBack]SwipeMapLeft"
+        ]
+    },
+    "SwipeMapRight": {
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "begin": [600,440,15,15],
+                "end": [100,440,15,15],
+                "end_hold": 2000
+            }
+        },
+        "max_hit": 10
+    },
+    "SwipeMapTop": {
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "begin": [290,500,15,15],
+                "end": [290,800,15,15],
+                "end_hold": 2000
+            }
+        },
+        "max_hit": 5
+    },
+    "SwipeMapLeft": {
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "begin": [120,441,15,15],
+                "end": [550,441,15,15],
+                "end_hold": 2000
+            }
+        },
+        "max_hit": 10
+    },
+    "FindPig": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "雕鸮营地"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "LeaveCurrentPage"
+        ]
+    },
+    "ExhaustEnergy": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "体力不足"
+                ]
+            }
+        },
+        "next": [
+            "End"
+        ]
+    },
+    "KillPig": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": [
+                    "pig.png"
+                ],
+                "index": 0
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "ExhaustEnergy",
+            "EndAutoPage",
+            "[JumpBack]AutoButton",
+            "[JumpBack]StartAutoPage"
+        ],
+        "max_hit": 1
+    },
+    "WorldExplorePage": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [5,519,413,170],
+                "expected": [
+                    "地图探索"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "ChooseGold": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [22,270,316,68],
+                "template": [
+                    "gold.png",
+                    "gold_night.png"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "Explore"
+        ]
+    },
+    "ChooseIron": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [22,270,316,68],
+                "template": [
+                    "iron.png",
+                    "iron_night.png"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "Explore"
+        ]
+    },
+    "ChooseGravel": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [22,270,316,68],
+                "template": [
+                    "gravel.png",
+                    "gravel_night.png"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "Explore"
+        ]
+    },
+    "Explore": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [499,318,171,76],
+                "expected": [
+                    "前往"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "EnterWorld"
+        ],
+        "post_delay": 2000
+    },
+    "EnterWorld": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [445,714,98,43],
+                "expected": [
+                    "确定"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "[JumpBack]Loading",
+            "DigResourceMain"
+        ],
+        "post_delay": 3000
+    },
+    "DigResourceMain": {
+        "next": [
+            "[JumpBack]AutoDigResource",
+            "[JumpBack]KillSlime",
+            "End"
+        ],
+        "post_delay": 1000
+    },
+    "AutoDigResource": {
+        "next": [
+            "ExhaustEnergy",
+            "EndAutoPage",
+            "[JumpBack]AutoButton",
+            "[JumpBack]StartAutoPage"
+        ],
+        "max_hit": 1
+    },
+    "AutoButton": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": [
+                    "auto_button.png"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "StartAutoPage": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [295,934,136,43],
+                "expected": [
+                    "开始托管"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [320,859,81,29]
+            }
+        },
+        "next": [
+            "InputAutoCount"
+        ]
+    },
+    "InputAutoCount": {
+        "action": {
+            "type": "InputText",
+            "param": {
+                "input_text": "6"  // 默认6次
+            }
+        },
+        "next": [
+            "StartAutoUseEnergy"
+        ]
+    },
+    "StartAutoUseEnergy": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [295,934,136,43],
+                "expected": [
+                    "开始托管"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "EndAutoPage": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [295,934,136,43],
+                "expected": [
+                    "结束托管"
+                ]
+            }
+        },
+        "next": [
+            "EndAutoPage",
+            "LeaveAutoPage"
+        ]
+    },
+    "LeaveAutoPage": {
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [317,1059,83,37]
+            }
+        }
+    },
+    "KillSlime": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": [
+                    "slime.png"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "[JumpBack]Loading",
+            "[JumpBack]StartFight",
+            "CloseByClickBlank"
+        ],
+        "timeout": 120000  // 两分钟时间等待战斗结束
+    }
+}
