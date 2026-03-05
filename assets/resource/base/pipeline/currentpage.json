@@ -4,7 +4,7 @@
             "type": "OCR",
             "param": {
                 "expected": [
-                    ".*"
+                    "兑换"
                 ]
             }
         }
@@ -14,8 +14,7 @@
             "type": "TemplateMatch",
             "param": {
                 "template": [
-                    "auto_icon1.png",
-                    "auto_icon2.png"
+                    "button/auto_button.png"
                 ]
             }
         },

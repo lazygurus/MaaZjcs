@@ -26,9 +26,9 @@
             "type": "TemplateMatch",
             "param": {
                 "template": [
-                    "airship1.png",
-                    "airship2.png",
-                    "airship3.png"
+                    "furniture/airship1.png",
+                    "furniture/airship2.png",
+                    "furniture/airship3.png"
                 ]
             }
         },
@@ -41,10 +41,12 @@
             "type": "TemplateMatch",
             "param": {
                 "template": [
-                    "fireplace1.png",
-                    "snow_fireplace1.png",
-                    "snow_fireplace2.png",
-                    "snow_fireplace3.png"
+                    "furniture/fireplace_light1.png",
+                    "furniture/fireplace_night1.png",
+                    "furniture/fireplace_night2.png",
+                    "furniture/fireplace_light_snow1.png",
+                    "furniture/fireplace_night_snow1.png",
+                    "furniture/fireplace_night_snow2.png"
                 ]
             }
         },
@@ -57,10 +59,10 @@
             "type": "TemplateMatch",
             "param": {
                 "template": [
-                    "light_tree.png",
-                    "night_tree.png",
-                    "snow_light_tree.png",
-                    "snow_night_tree.png"
+                    "furniture/tree_light.png",
+                    "furniture/tree_night.png",
+                    "furniture/tree_light_snow.png",
+                    "furniture/tree_night_snow.png"
                 ]
             }
         },
@@ -157,9 +159,10 @@
         "recognition": {
             "type": "OCR",
             "param": {
-                "roi": [470,1205,54,25],
+                "roi": [154,1180,556,79],
                 "expected": [
-                    "兌換"
+                    "兌換",
+                    "兌换"
                 ]
             }
         },

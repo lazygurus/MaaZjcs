@@ -89,14 +89,14 @@
             "name": "使用命运果实",
             "entry": "Fruit"
         },
-        {
-            "name": "识别当前页面文字",
-            "entry": "OcrCurrentPage"
-        },
-        {
-            "name": "识别指定图片",
-            "entry": "RecognizePicture"
-        }
+        // {
+        //     "name": "识别当前页面文字",
+        //     "entry": "OcrCurrentPage"
+        // },
+        // {
+        //     "name": "识别指定图片",
+        //     "entry": "RecognizePicture"
+        // }
     ],
     "option": {
         "晨星商店": {

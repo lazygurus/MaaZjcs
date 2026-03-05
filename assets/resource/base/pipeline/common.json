@@ -129,10 +129,10 @@
                     15,1174,120,96
                 ],
                 "template": [
-                    "leave_button1.png",
-                    "leave_button2.png",
-                    "leave_button3.png",
-                    "leave_button4.png"
+                    "button/leave_button1.png",
+                    "button/leave_button2.png",
+                    "button/leave_button3.png",
+                    "button/leave_button4.png"
                 ]
             }
         },
@@ -157,8 +157,7 @@
                     136
                 ],
                 "template": [
-                    "home_button1.png",
-                    "home_button2.png"
+                    "button/home.png"
                 ]
             }
         },
@@ -179,10 +178,7 @@
                     136
                 ],
                 "template": [
-                    "note1.png",
-                    "note2.png",
-                    "note_hint1.png",
-                    "note_hint2.png"
+                    "button/note.png"
                 ]
             }
         },
@@ -203,8 +199,7 @@
                     136
                 ],
                 "template": [
-                    "world1.png",
-                    "world2.png"
+                    "button/world.png"
                 ]
             }
         },
@@ -303,6 +298,22 @@
             "param": {
                 "expected": [
                     "开始战斗"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "CleanHomeAnimal": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [309,602,308,441],
+                "template": [
+                    "home_animal/bird_light_snow1.png",
+                    "home_animal/bird_light_snow2.png",
+                    "home_animal/mouse_light1.png"
                 ]
             }
         },

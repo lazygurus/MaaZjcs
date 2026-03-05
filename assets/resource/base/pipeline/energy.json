@@ -70,7 +70,7 @@
             "param": {
                 "roi": [26,999,43,46],
                 "template": [
-                    "lower_floor.png"
+                    "button/lower_floor.png"
                 ]
             }
         },
@@ -207,7 +207,7 @@
             "type": "TemplateMatch",
             "param": {
                 "template": [
-                    "pig.png"
+                    "materials/pig.png"
                 ],
                 "index": 0
             }
@@ -229,8 +229,8 @@
             "param": {
                 "roi": [22,270,316,68],
                 "template": [
-                    "gold.png",
-                    "gold_night.png"
+                    "materials/gold.png",
+                    "materials/gold_night.png"
                 ]
             }
         },
@@ -247,8 +247,8 @@
             "param": {
                 "roi": [22,270,316,68],
                 "template": [
-                    "iron.png",
-                    "iron_night.png"
+                    "materials/iron.png",
+                    "materials/iron_night.png"
                 ]
             }
         },
@@ -265,8 +265,8 @@
             "param": {
                 "roi": [22,270,316,68],
                 "template": [
-                    "gravel.png",
-                    "gravel_night.png"
+                    "materials/gravel.png",
+                    "materials/gravel_night.png"
                 ]
             }
         },
@@ -336,7 +336,7 @@
             "type": "TemplateMatch",
             "param": {
                 "template": [
-                    "auto_button.png"
+                    "button/auto_button.png"
                 ]
             }
         },
@@ -417,7 +417,7 @@
             "type": "TemplateMatch",
             "param": {
                 "template": [
-                    "slime.png"
+                    "materials/slime.png"
                 ]
             }
         },

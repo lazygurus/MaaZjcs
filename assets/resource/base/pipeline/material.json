@@ -185,7 +185,7 @@
             "param": {
                 "roi": [271,832,181,181],
                 "template": [
-                    "magnifying_glass.png"
+                    "materials/magnifying_glass.png"
                 ]
             }
         },
@@ -200,7 +200,7 @@
             "param": {
                 "roi": [271,832,181,181],
                 "template": [
-                    "iron_hammer.png"
+                    "materials/iron_hammer.png"
                 ]
             }
         },
@@ -216,7 +216,7 @@
             "param": {
                 "roi": [271,832,181,181],
                 "template": [
-                    "gold_pickaxe.png"
+                    "materials/gold_pickaxe.png"
                 ]
             }
         },
@@ -232,7 +232,7 @@
             "param": {
                 "roi": [271,832,181,181],
                 "template": [
-                    "monster_boxing.png"
+                    "materials/monster_boxing.png"
                 ]
             }
         },
@@ -248,7 +248,7 @@
             "param": {
                 "roi": [271,832,181,181],
                 "template": [
-                    "gravel_shovel.png"
+                    "materials/gravel_shovel.png"
                 ]
             }
         },
