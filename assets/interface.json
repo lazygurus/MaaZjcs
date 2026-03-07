@@ -100,6 +100,10 @@
         {
             "name": "公会",
             "entry": "Guild"
+        },
+        {
+            "name": "领取奖励",
+            "entry": "Prize"
         }
         // {
         //     "name": "清理家园",

@@ -3,17 +3,17 @@
         "next": [
             "[JumpBack]LeaveCurrentPage",
             "[JumpBack]CloseGift",
-            "CommissionMain"
+            "AdventureMain"
         ]
     },
-    "CommissionMain": {
+    "AdventureMain": {
         "next": [
             "[JumpBack]NotePage",
-            "[JumpBack]EnterCommissionPage",
+            "[JumpBack]EnterAdventurePage",
             "LeaveCurrentPage"
         ]
     },
-    "EnterCommissionPage": {
+    "EnterAdventurePage": {
         "recognition": {
             "type": "OCR",
             "param": {
@@ -27,10 +27,10 @@
             "type": "Click"
         },
         "next": [
-            "CommissionPage"
+            "AdventurePage"
         ]
     },
-    "CommissionPage": {
+    "AdventurePage": {
         "recognition": {
             "type": "OCR",
             "param": {
@@ -41,53 +41,11 @@
             }
         },
         "next": [
-            "[JumpBack]SelectCommission",
+            "[JumpBack]SelectAdventure",
             "End"
         ]
     },
-    // "FinishedCommission": {
-    //     "recognition": {
-    //         "type": "And",
-    //         "param": {
-    //             "all_of": [
-    //                 {
-    //                     "recognition": {
-    //                         "type": "TemplateMatch",
-    //                         "param": {
-    //                             "template": [
-    //                                 "commission/finished_lint.png"
-    //                             ]
-    //                         }
-    //                     }
-    //                 },
-    //                 {
-    //                     "recognition": {
-    //                         "type": "TemplateMatch",
-    //                         "param": {
-    //                             "template": [
-    //                                 "commission/blue_card.png",
-    //                                 "commission/blue_gift.png",
-    //                                 "commission/purple_card.png",
-    //                                 "commission/purple_gift.png",
-    //                                 "commission/purple_star.png",
-    //                                 "commission/purple_star.png",
-    //                                 "commission/blue_ball.png",
-    //                                 "commission/pet_ball.png"
-    //                             ]
-    //                         }
-    //                     }
-    //                 }
-    //             ]
-    //         }
-    //     },
-    //     "action": {
-    //         "type": "Click"
-    //     },
-    //     "next": [
-    //         "FinishedCommissionPage"
-    //     ]
-    // },
-    "FinishedCommissionPage": {
+    "FinishedAdventurePage": {
         "recognition": {
             "type": "OCR",
             "param": {
@@ -103,19 +61,19 @@
             }
         }
     },
-    "SelectCommission": {
+    "SelectAdventure": {
         "recognition": {
             "type": "TemplateMatch",
             "param": {
                 "template": [
-                    "commission/blue_card.png",
-                    "commission/blue_gift.png",
-                    "commission/purple_card.png",
-                    "commission/purple_gift.png",
-                    "commission/purple_star.png",
-                    "commission/purple_star.png",
-                    "commission/blue_ball.png",
-                    "commission/pet_ball.png"
+                    "adventure/blue_card.png",
+                    "adventure/blue_gift.png",
+                    "adventure/purple_card.png",
+                    "adventure/purple_gift.png",
+                    "adventure/purple_star.png",
+                    "adventure/purple_star.png",
+                    "adventure/blue_ball.png",
+                    "adventure/pet_ball.png"
                 ]
             }
         },
@@ -123,11 +81,11 @@
             "type": "Click"
         },
         "next": [
-            "FinishedCommissionPage",
-            "QuickSelectCommissionMember"
+            "FinishedAdventurePage",
+            "QuickSelectAdventureMember"
         ]
     },
-    "QuickSelectCommissionMember": {
+    "QuickSelectAdventureMember": {
         "recognition": {
             "type": "OCR",
             "param": {
@@ -141,10 +99,10 @@
             "type": "Click"
         },
         "next": [
-            "StartCommission"
+            "StartAdventure"
         ]
     },
-    "StartCommission": {
+    "StartAdventure": {
         "recognition": {
             "type": "OCR",
             "param": {
@@ -159,7 +117,7 @@
         },
         "next": [
             "[JumpBack]ConfirmMember",
-            "CommissionDepart"
+            "AdventureDepart"
         ]
     },
     "ConfirmMember": {
@@ -175,7 +133,7 @@
             "type": "Click"
         }
     },
-    "CommissionDepart": {
+    "AdventureDepart": {
         "recognition": {
             "type": "OCR",
             "param": {
