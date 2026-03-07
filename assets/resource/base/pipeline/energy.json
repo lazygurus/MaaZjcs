@@ -89,6 +89,7 @@
         "action": {
             "type": "Click"
         },
+        "post_delay": 2000,
         "max_hit": 1
     },
     "EnterForestCountry": {
