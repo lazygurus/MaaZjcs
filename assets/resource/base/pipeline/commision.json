@@ -1,0 +1,194 @@
+{
+    "Commission": {
+        "next": [
+            "[JumpBack]LeaveCurrentPage",
+            "[JumpBack]CloseGift",
+            "CommissionMain"
+        ]
+    },
+    "CommissionMain": {
+        "next": [
+            "[JumpBack]NotePage",
+            "[JumpBack]EnterCommissionPage",
+            "LeaveCurrentPage"
+        ]
+    },
+    "EnterCommissionPage": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [423,133,289,305],
+                "expected": [
+                    "羁绊冒险"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "CommissionPage"
+        ]
+    },
+    "CommissionPage": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [146,1177,560,83],
+                "expected": [
+                    "羁绊冒险"
+                ]
+            }
+        },
+        "next": [
+            "[JumpBack]SelectCommission",
+            "End"
+        ]
+    },
+    // "FinishedCommission": {
+    //     "recognition": {
+    //         "type": "And",
+    //         "param": {
+    //             "all_of": [
+    //                 {
+    //                     "recognition": {
+    //                         "type": "TemplateMatch",
+    //                         "param": {
+    //                             "template": [
+    //                                 "commission/finished_lint.png"
+    //                             ]
+    //                         }
+    //                     }
+    //                 },
+    //                 {
+    //                     "recognition": {
+    //                         "type": "TemplateMatch",
+    //                         "param": {
+    //                             "template": [
+    //                                 "commission/blue_card.png",
+    //                                 "commission/blue_gift.png",
+    //                                 "commission/purple_card.png",
+    //                                 "commission/purple_gift.png",
+    //                                 "commission/purple_star.png",
+    //                                 "commission/purple_star.png",
+    //                                 "commission/blue_ball.png",
+    //                                 "commission/pet_ball.png"
+    //                             ]
+    //                         }
+    //                     }
+    //                 }
+    //             ]
+    //         }
+    //     },
+    //     "action": {
+    //         "type": "Click"
+    //     },
+    //     "next": [
+    //         "FinishedCommissionPage"
+    //     ]
+    // },
+    "FinishedCommissionPage": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "委派结束"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [334,930,66,59]
+            }
+        }
+    },
+    "SelectCommission": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": [
+                    "commission/blue_card.png",
+                    "commission/blue_gift.png",
+                    "commission/purple_card.png",
+                    "commission/purple_gift.png",
+                    "commission/purple_star.png",
+                    "commission/purple_star.png",
+                    "commission/blue_ball.png",
+                    "commission/pet_ball.png"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "FinishedCommissionPage",
+            "QuickSelectCommissionMember"
+        ]
+    },
+    "QuickSelectCommissionMember": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [60,1041,600,101],
+                "expected": [
+                    "快速选择"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "StartCommission"
+        ]
+    },
+    "StartCommission": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [60,1041,600,101],
+                "expected": [
+                    "开始"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "[JumpBack]ConfirmMember",
+            "CommissionDepart"
+        ]
+    },
+    "ConfirmMember": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "确定"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "CommissionDepart": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "委派开始"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [322,858,68,58]
+            }
+        }
+    }
+}

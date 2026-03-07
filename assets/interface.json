@@ -94,9 +94,13 @@
             "entry": "RewardRecovery"
         },
         {
-            "name": "清理家园",
-            "entry": "CleanHomeAnimal"
-        }
+            "name": "羁绊冒险",
+            "entry": "Commission"
+        },
+        // {
+        //     "name": "清理家园",
+        //     "entry": "CleanHomeAnimal"
+        // },
         // {
         //     "name": "识别当前页面文字",
         //     "entry": "OcrCurrentPage"

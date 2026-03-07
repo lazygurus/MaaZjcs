@@ -3,8 +3,9 @@
         "recognition": {
             "type": "OCR",
             "param": {
+                "roi": [146,1177,560,83],
                 "expected": [
-                    "兑换"
+                    "羁绊冒险"
                 ]
             }
         }
@@ -14,7 +15,7 @@
             "type": "TemplateMatch",
             "param": {
                 "template": [
-                    "button/auto_button.png"
+                    "commission/purple_star.png"
                 ]
             }
         },
