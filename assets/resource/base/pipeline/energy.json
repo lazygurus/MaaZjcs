@@ -9,17 +9,19 @@
     "UseEnergy": {
         "next": [
             "[JumpBack]PigByEnergy", // 杀猪
-            "[JumpBack]GoldByEnergy",  // 挖金币
-            "[JumpBack]IronByEnergy",  // 挖铁
-            "[JumpBack]GravelByEnergy",  // 挖砂
+            "[JumpBack]GoldByEnergy", // 挖金币
+            "[JumpBack]IronByEnergy", // 挖铁
+            "[JumpBack]GravelByEnergy", // 挖砂
             "LeaveCurrentPage"
         ]
     },
     "PigByEnergy": {
         "enabled": false,
         "next": [
+            "EnterForestCountry",
             "[JumpBack]WorldPage",
-            "ChooseLowerFloor"
+            "[JumpBack]ChooseLowerFloor",
+            "[JumpBack]SwipeSearchForestCountry"
         ],
         "max_hit": 1
     },
@@ -48,13 +50,18 @@
             "[JumpBack]ExploreResourcePage",
             "ChooseGravel"
         ],
-        "max_hit": 1   
+        "max_hit": 1
     },
     "ExploreResourcePage": {
         "recognition": {
             "type": "OCR",
             "param": {
-                "roi": [5,519,413,170],
+                "roi": [
+                    5,
+                    519,
+                    413,
+                    170
+                ],
                 "expected": [
                     "地图探索"
                 ]
@@ -68,7 +75,12 @@
         "recognition": {
             "type": "TemplateMatch",
             "param": {
-                "roi": [26,999,43,46],
+                "roi": [
+                    26,
+                    999,
+                    43,
+                    46
+                ],
                 "template": [
                     "button/lower_floor.png"
                 ]
@@ -77,15 +89,12 @@
         "action": {
             "type": "Click"
         },
-        "next": [
-            "EnterForestCountry"
-        ]
+        "max_hit": 1
     },
     "EnterForestCountry": {
         "recognition": {
             "type": "OCR",
             "param": {
-                "roi": [1,235,202,315],
                 "expected": [
                     "森之国"
                 ]
@@ -99,26 +108,69 @@
             "OpenMap"
         ]
     },
+    "SwipeSearchForestCountry": {
+        "next": [
+            "SwipeLeftSearchForestCountry",
+            "SwipeRightSearchForestCountry",
+            "SwipeUpSearchForestCountry",
+            "SwipeDownSearchForestCountry",
+            "End"
+        ]
+    },
+    "SwipeLeftSearchForestCountry": {
+        "next": [
+            "SwipeLeft"
+        ],
+        "max_hit": 5
+    },
+    "SwipeRightSearchForestCountry": {
+        "next": [
+            "SwipeRight"
+        ],
+        "max_hit": 5
+    },
+    "SwipeUpSearchForestCountry": {
+        "next": [
+            "SwipeUp"
+        ],
+        "max_hit": 5
+    },
+    "SwipeDownSearchForestCountry": {
+        "next": [
+            "SwipeDown"
+        ],
+        "max_hit": 5
+    },
     "OpenMap": {
         "recognition": {
             "type": "OCR",
             "param": {
-                "roi": [523,244,199,54],
+                "roi": [
+                    523,
+                    244,
+                    199,
+                    54
+                ],
                 "expected": [
-                    "\\(\\d+,\\d+\\)"  // 匹配任意坐标
+                    "\\(\\d+,\\d+\\)" // 匹配任意坐标
                 ]
             }
         },
         "action": {
             "type": "Click",
             "param": {
-                "target": [562,135,116,89]
+                "target": [
+                    562,
+                    135,
+                    116,
+                    89
+                ]
             }
         },
         "next": [
             "[JumpBack]FindInMap",
             "[JumpBack]KillPig",
-            "[JumpBack]KillSlime",
+            "[JumpBack]SlimeSearch",
             "End"
         ],
         "post_delay": 2000
@@ -127,7 +179,12 @@
         "recognition": {
             "type": "OCR",
             "param": {
-                "roi": [560,35,152,192],
+                "roi": [
+                    560,
+                    35,
+                    152,
+                    192
+                ],
                 "expected": [
                     "传送门"
                 ]
@@ -136,41 +193,26 @@
         "next": [
             "FindPig",
             "[JumpBack]SwipeMapRight",
-            "[JumpBack]SwipeMapTop",
+            "[JumpBack]SwipeMapUp",
             "[JumpBack]SwipeMapLeft"
         ]
     },
     "SwipeMapRight": {
-        "action": {
-            "type": "Swipe",
-            "param": {
-                "begin": [600,440,15,15],
-                "end": [100,440,15,15],
-                "end_hold": 2000
-            }
-        },
+        "next": [
+            "SwipeRight"
+        ],
         "max_hit": 10
     },
-    "SwipeMapTop": {
-        "action": {
-            "type": "Swipe",
-            "param": {
-                "begin": [290,500,15,15],
-                "end": [290,800,15,15],
-                "end_hold": 2000
-            }
-        },
+    "SwipeMapUp": {
+        "next": [
+            "SwipeUp"
+        ],
         "max_hit": 5
     },
     "SwipeMapLeft": {
-        "action": {
-            "type": "Swipe",
-            "param": {
-                "begin": [120,441,15,15],
-                "end": [550,441,15,15],
-                "end_hold": 2000
-            }
-        },
+        "next": [
+            "SwipeLeft"
+        ],
         "max_hit": 10
     },
     "FindPig": {
@@ -227,9 +269,14 @@
         "recognition": {
             "type": "TemplateMatch",
             "param": {
-                "roi": [22,270,316,68],
+                "roi": [
+                    22,
+                    270,
+                    316,
+                    68
+                ],
                 "template": [
-                    "materials/gold.png",
+                    "materials/gold_light.png",
                     "materials/gold_night.png"
                 ]
             }
@@ -245,9 +292,14 @@
         "recognition": {
             "type": "TemplateMatch",
             "param": {
-                "roi": [22,270,316,68],
+                "roi": [
+                    22,
+                    270,
+                    316,
+                    68
+                ],
                 "template": [
-                    "materials/iron.png",
+                    "materials/iron_light.png",
                     "materials/iron_night.png"
                 ]
             }
@@ -263,9 +315,14 @@
         "recognition": {
             "type": "TemplateMatch",
             "param": {
-                "roi": [22,270,316,68],
+                "roi": [
+                    22,
+                    270,
+                    316,
+                    68
+                ],
                 "template": [
-                    "materials/gravel.png",
+                    "materials/gravel_light.png",
                     "materials/gravel_night.png"
                 ]
             }
@@ -281,7 +338,12 @@
         "recognition": {
             "type": "OCR",
             "param": {
-                "roi": [499,318,171,76],
+                "roi": [
+                    499,
+                    318,
+                    171,
+                    76
+                ],
                 "expected": [
                     "前往"
                 ]
@@ -299,7 +361,12 @@
         "recognition": {
             "type": "OCR",
             "param": {
-                "roi": [445,714,98,43],
+                "roi": [
+                    445,
+                    714,
+                    98,
+                    43
+                ],
                 "expected": [
                     "确定"
                 ]
@@ -316,11 +383,101 @@
     },
     "DigResourceMain": {
         "next": [
+            "[JumpBack]LocateResource",
             "[JumpBack]AutoDigResource",
-            "[JumpBack]KillSlime",
+            "[JumpBack]SlimeSearch",
             "End"
         ],
         "post_delay": 1000
+    },
+    "LocateResource": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": [
+                    "materials/gold_locate.png",
+                    "materials/iron_locate.png",
+                    "materials/gravel_locate.png"
+                ],
+                "threshold": [
+                    0.9,
+                    0.9,
+                    0.9
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "max_hit": 1
+    },
+    "SlimeSearch": {
+        "next": [
+            "[JumpBack]KillSlime",
+            "[JumpBack]SwipeSlimeUp",
+            "[JumpBack]SwipeSlimeDown",
+            "[JumpBack]SwipeSlimeUpBack",
+            "[JumpBack]SwipeSlimeLeft",
+            "[JumpBack]SwipeSlimeRight",
+            "[JumpBack]SwipeSlimeLeftBack",
+            "End"
+        ],
+        "max_hit": 1
+    },
+    "KillSlime": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": [
+                    "materials/slime.png"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "[JumpBack]Loading",
+            "[JumpBack]StartFight",
+            "CloseByClickBlank"
+        ],
+        "timeout": 120000 // 两分钟时间等待战斗结束
+    },
+    "SwipeSlimeUp": {
+        "next": [
+            "SwipeUp"
+        ],
+        "max_hit": 2
+    },
+    "SwipeSlimeDown": {
+        "next": [
+            "SwipeDown"
+        ],
+        "max_hit": 4  
+    },
+    "SwipeSlimeUpBack": {
+        "next": [
+            "SwipeUp"
+        ],
+        "max_hit": 2
+    },
+    "SwipeSlimeLeft": {
+        "next": [
+            "SwipeLeft"
+        ],
+        "max_hit": 2
+    },
+    "SwipeSlimeRight": {
+        "next": [
+            "SwipeRight"
+        ],
+        "max_hit": 4
+    },
+    "SwipeSlimeLeftBack": {
+        "next": [
+            "SwipeLeft"
+        ],
+        "max_hit": 2
     },
     "AutoDigResource": {
         "next": [
@@ -348,7 +505,12 @@
         "recognition": {
             "type": "OCR",
             "param": {
-                "roi": [295,934,136,43],
+                "roi": [
+                    295,
+                    934,
+                    136,
+                    43
+                ],
                 "expected": [
                     "开始托管"
                 ]
@@ -357,7 +519,12 @@
         "action": {
             "type": "Click",
             "param": {
-                "target": [320,859,81,29]
+                "target": [
+                    320,
+                    859,
+                    81,
+                    29
+                ]
             }
         },
         "next": [
@@ -368,7 +535,7 @@
         "action": {
             "type": "InputText",
             "param": {
-                "input_text": "6"  // 默认6次
+                "input_text": "6" // 默认6次
             }
         },
         "next": [
@@ -379,7 +546,12 @@
         "recognition": {
             "type": "OCR",
             "param": {
-                "roi": [295,934,136,43],
+                "roi": [
+                    295,
+                    934,
+                    136,
+                    43
+                ],
                 "expected": [
                     "开始托管"
                 ]
@@ -393,7 +565,12 @@
         "recognition": {
             "type": "OCR",
             "param": {
-                "roi": [295,934,136,43],
+                "roi": [
+                    295,
+                    934,
+                    136,
+                    43
+                ],
                 "expected": [
                     "结束托管"
                 ]
@@ -408,27 +585,13 @@
         "action": {
             "type": "Click",
             "param": {
-                "target": [317,1059,83,37]
-            }
-        }
-    },
-    "KillSlime": {
-        "recognition": {
-            "type": "TemplateMatch",
-            "param": {
-                "template": [
-                    "materials/slime.png"
+                "target": [
+                    317,
+                    1059,
+                    83,
+                    37
                 ]
             }
-        },
-        "action": {
-            "type": "Click"
-        },
-        "next": [
-            "[JumpBack]Loading",
-            "[JumpBack]StartFight",
-            "CloseByClickBlank"
-        ],
-        "timeout": 120000  // 两分钟时间等待战斗结束
+        }
     }
 }
