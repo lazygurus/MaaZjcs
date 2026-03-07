@@ -151,7 +151,7 @@
             "type": "Click"
         },
         "next": [
-            "ReceivePetResource"
+            "ReceivePrize"
         ]
     },
     "ExchangePetResourcePage": {
@@ -245,21 +245,7 @@
             "type": "Click"
         },
         "next": [
-            "ReceivePetResource"
+            "ReceivePrize"
         ]
-    },
-    "ReceivePetResource": {
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "roi": [223,338,275,72],
-                "expected": [
-                    "获得奖励"
-                ]
-            }
-        },
-        "action": {
-            "type": "Click"
-        }
     }
 }

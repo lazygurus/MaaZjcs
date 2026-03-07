@@ -39,7 +39,7 @@
             "type": "Click"
         },
         "next": [
-            "[JumpBack]QuickReceiveCartPrize",
+            "[JumpBack]ReceivePrize",
             "[JumpBack]ReceiveCartPrize",
             "[JumpBack]CartPage",
             "End"
@@ -98,20 +98,6 @@
             "param": {
                 "expected": [
                     "一键领取"
-                ]
-            }
-        },
-        "action": {
-            "type": "Click"
-        },
-        "max_hit": 1
-    },
-    "QuickReceiveCartPrize": {
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "expected": [
-                    "获得奖励"
                 ]
             }
         },

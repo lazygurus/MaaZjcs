@@ -97,6 +97,10 @@
             "name": "羁绊冒险",
             "entry": "Commission"
         },
+        {
+            "name": "公会",
+            "entry": "Guild"
+        }
         // {
         //     "name": "清理家园",
         //     "entry": "CleanHomeAnimal"

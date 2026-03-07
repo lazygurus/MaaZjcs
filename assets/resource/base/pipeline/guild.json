@@ -1,0 +1,255 @@
+{
+    "Guild": {
+        "next": [
+            "[JumpBack]LeaveCurrentPage",
+            "[JumpBack]CloseGift",
+            "[JumpBack]GuildPage",
+            "SearchGuildRight"
+        ]
+    },
+    "SearchGuildRight": {
+        "next": [
+            "[JumpBack]GuildHome",
+            "[JumpBack]GuildGate",
+            // "[JumpBack]GuildStore",
+            // "[JumpBack]SheepPen",
+            // "[JumpBack]Farmland",
+            // "[JumpBack]HenHouse",
+            "GuildRightEdge",
+            "[JumpBack]SwipeGuildRight"
+        ]
+    },
+    "SearchGuildLeft": {
+        "next": [
+            "[JumpBack]GuildHome",
+            "[JumpBack]GuildGate",
+            // "[JumpBack]GuildStore",
+            // "[JumpBack]SheepPen",
+            // "[JumpBack]Farmland",
+            // "[JumpBack]HenHouse",
+            "GuildLeftEdge",
+            "[JumpBack]SwipeGuildLeft"
+        ]
+    },
+    "GuildRightEdge": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "冶炼工坊"
+                ]
+            }
+        },
+        "next": [
+            "SearchGuildLeft"
+        ]
+    },
+    "GuildLeftEdge": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "田园"
+                ]
+            }
+        }
+    },
+    "SwipeGuildRight": {
+        "next": [
+            "SwipeRight"
+        ]
+    },
+    "SwipeGuildLeft": {
+        "next": [
+            "SwipeLeft"
+        ]
+    },
+    "GuildHome": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "公会大厅"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "DonateButton"
+        ],
+        "post_delay": 1000,
+        "max_hit": 1
+    },
+    "DonateButton": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [182,1010,110,105],
+                "template": [
+                    "button/donate_button.png"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "StopDonate",
+            "[JumpBack]Donate"
+        ]
+    },
+    "StopDonate": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [415,866,57,37],
+                "expected": [
+                    "[3-5]/5"  // 默认每日捐赠最高次数为3次
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [307,1052,106,48]
+            }
+        },
+        "next": [
+            "LeaveCurrentPage"
+        ]
+    },
+    "Donate": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [234,910,250,56],
+                "expected": [
+                    "捐赠"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "ConfirmDonate",
+            "End"
+        ],
+        "post_delay": 1000
+    },
+    "ConfirmDonate": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [435,713,124,47],
+                "expected": [
+                    "确定"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "GuildGate": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "远征之门"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "EnterBossPage"
+        ],
+        "max_hit": 1
+    },
+    "EnterBossPage": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "公会讨伐"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "[JumpBack]DefeatBoss",
+            "[JumpBack]ChallengeBoss",
+            "LeaveCurrentPage"
+        ],
+        "post_delay": 2000
+    },
+    "DefeatBoss": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [210,940,305,86],
+                "expected": [
+                    "已击败"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [330,703,64,63]
+            }
+        },
+        "next": [
+            "[JumpBack]ReceivePrize",
+            "ChooseNextBoss"
+        ],
+        "post_delay": 2000
+    },
+    "ChooseNextBoss": {
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [459,880,44,28]
+            }
+        }
+    },
+    "ChallengeBoss": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [205,943,328,85],
+                "expected": [
+                    "挑战"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "[JumpBack]Loading",
+            "[JumpBack]StartFight",
+            "[JumpBack]CloseByClickBlank",
+            "LeaveCurrentPage"
+        ],
+        "post_delay": 2000,
+        "max_hit": 1
+    },
+    "GuildStore": {
+    },
+    "SheepPen": {
+        
+    },
+    "Farmland": {
+        
+    },
+    "HenHouse": {
+        
+    }
+}

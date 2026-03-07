@@ -62,22 +62,8 @@
             }
         },
         "next": [
-            "Prize" // 领奖
+            "ReceivePrize" // 领奖
         ]
-    },
-    "Prize": {
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "roi": [177,334,375,81],
-                "expected": [
-                    "获得奖励"
-                ]
-            }
-        },
-        "action": {
-            "type": "Click"
-        }
     },
     "SelectAttackSlot": {
         "recognition": {
