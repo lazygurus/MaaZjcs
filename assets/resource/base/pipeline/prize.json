@@ -10,8 +10,11 @@
     "GetAllPrize": {
         "next": [
             "[JumpBack]LeaveCurrentPage",
-            "[JumpBack]GetTaskPrizeMain",
-
+            "[JumpBack]GetTaskPrizeMain",  // 领取任务的奖励
+            "[JumpBack]GetShoppingMallPrizeMain",  // 领取商城的奖励
+            "[JumpBack]GetPresentMain",  // 领取馈赠中的奖励
+            "[JumpBack]GetPresentPrize",  // 领取活动中的奖励
+            "End"
         ]
     },
     "GetTaskPrizeMain": {
@@ -141,5 +144,326 @@
             "type": "Click"
         },
         "post_delay": 1000
+    },
+    "GetShoppingMallPrizeMain": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [619,971,92,72],
+                "template": "button/daily_entry.png"
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "EnterShoppingMallPage"
+        ],
+        "post_delay": 1000,
+        "max_hit": 1
+    },
+    "EnterShoppingMallPage": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [359,628,318,134],
+                "expected": [
+                    "商城"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "[JumpBack]XunliPage",
+            "[JumpBack]DailyDiscountPage",
+            "[JumpBack]WeeklyDiscountPage",
+            "[JumpBack]SwipeDownShoppingMallPage",
+            "LeaveCurrentPage"
+        ],
+        "post_delay": 2000
+    },
+    "XunliPage": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "巡礼之证"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "[JumpBack]XunliDestination",
+            "[JumpBack]XunliCertification",
+            "LeaveCurrentPage"
+        ],
+        "post_delay": 2000,
+        "max_hit": 1
+    },
+    "SwipeDownShoppingMallPage": {
+        "next": [
+            "SwipeDown"
+        ],
+        "max_hit": 2
+    },
+    "XunliDestination": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "巡礼目标"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "[JumpBack]XunliDailyDestination",
+            "[JumpBack]XunliWeeklyDestination",
+            "[JumpBack]XunliTermDestination",
+            "End"
+        ],
+        "post_delay": 2000,
+        "max_hit": 1
+    },
+    "XunliDailyDestination": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "每日目标"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "[JumpBack]GetXunliDestinationPrize",
+            "End"
+        ],
+        "post_delay": 2000,
+        "max_hit": 1
+    },
+    "XunliWeeklyDestination": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "每周目标"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "[JumpBack]GetXunliDestinationPrize",
+            "End"
+        ],
+        "post_delay": 2000,
+        "max_hit": 1
+    },
+    "XunliTermDestination": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "本期目标"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "[JumpBack]GetXunliDestinationPrize",
+            "End"
+        ],
+        "post_delay": 2000,
+        "max_hit": 1
+    },
+    "GetXunliDestinationPrize": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [462,339,227,710],
+                "expected": [
+                    "领取"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_delay": 2000
+    },
+    "XunliCertification": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [146,1168,566,102],
+                "expected": [
+                    "巡礼之证"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "[JumpBack]GetXunliCertificationPrize",
+            "End"
+        ],
+        "post_delay": 2000,
+        "max_hit": 1
+    },
+    "GetXunliCertificationPrize": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [182,485,133,99],
+                "template": "red_lint.png"
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "ReceivePrize"
+        ],
+        "post_delay": 2000
+    },
+    "DailyDiscountPage": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "每日特惠"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "[JumpBack]GetDailyDiscountPrize",
+            "LeaveCurrentPage"
+        ],
+        "post_delay": 2000,
+        "max_hit": 1
+    },
+    "GetDailyDiscountPrize": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [54,308,135,128],
+                "template": "red_lint.png"
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "[JumpBack]ReceivePrize",
+            "End"
+        ],
+        "post_delay": 2000
+    },
+    "WeeklyDiscountPage": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "本周精选"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "[JumpBack]GetWeeklyDiscountPrize",
+            "LeaveCurrentPage"
+        ],
+        "post_delay": 2000,
+        "max_hit": 1
+    },
+    "GetWeeklyDiscountPrize": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [20,181,130,131],
+                "template": "red_lint.png"
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "[JumpBack]ReceivePrize",
+            "End"
+        ],
+        "post_delay": 2000
+    },
+    "GetPresentMain": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [619,971,92,72],
+                "template": "button/daily_entry.png"
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "EnterPresentPage"
+        ],
+        "post_delay": 1000,
+        "max_hit": 1
+    },
+    "EnterPresentPage": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "馈赠"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "[JumpBack]GetPresentPrize",
+            "LeaveCurrentPage"
+        ],
+        "post_delay": 2000,
+        "max_hit": 1
+    },
+    "GetPresentPrize": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [479,116,233,1009],
+                "expected": [
+                    "领取"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "[JumpBack]ReceivePrize",
+            "End"
+        ],
+        "post_delay": 2000
     }
 }
