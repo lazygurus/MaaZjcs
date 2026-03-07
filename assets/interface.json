@@ -89,6 +89,14 @@
             "name": "使用命运果实",
             "entry": "Fruit"
         },
+        {
+            "name": "找回奖励",
+            "entry": "RewardRecovery"
+        },
+        {
+            "name": "清理家园",
+            "entry": "CleanHomeAnimal"
+        }
         // {
         //     "name": "识别当前页面文字",
         //     "entry": "OcrCurrentPage"

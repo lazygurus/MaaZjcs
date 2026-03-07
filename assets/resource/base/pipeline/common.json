@@ -84,7 +84,7 @@
         "recognition": {
             "type": "OCR",
             "param": {
-                "roi": [158,521,404,75],
+                "roi": [222,624,273,43],
                 "expected": [
                     "礼包"
                 ]
@@ -295,9 +295,32 @@
             "param": {
                 "roi": [309,602,308,441],
                 "template": [
-                    "home_animal/bird_light_snow1.png",
-                    "home_animal/bird_light_snow2.png",
-                    "home_animal/mouse_light1.png"
+                    "home_animal/bird_light1.png",
+                    "home_animal/bird_light2.png",
+                    "home_animal/bird_night1.png",
+                    "home_animal/bird_night2.png",
+                    "home_animal/bird_night3.png",
+                    "home_animal/mouse_light1.png",
+                    "home_animal/mouse_night1.png",
+                    "home_animal/mouse_night2.png",
+                    "home_animal/grass_light1.png",
+                    "home_animal/grass_light2.png",
+                    "home_animal/grass_light3.png",
+                    "home_animal/grass_light4.png"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "Chat": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [300,1214,123,62],
+                "template": [
+                    "button/next_chat.png"
                 ]
             }
         },

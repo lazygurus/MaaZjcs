@@ -1,0 +1,135 @@
+{
+    "RewardRecovery": {
+        "next": [
+            "[JumpBack]LeaveCurrentPage",
+            "[JumpBack]CloseGift",
+            "[JumpBack]HomePage",
+            "SearchFeileLeft"
+        ]
+    },
+    "SearchFeileLeft": {
+        "next": [
+            "Feile",
+            "LeftEdgeInSearchFeile",
+            "[JumpBack]SwipeLeft"
+        ]
+    },
+    "SearchFeileRight": {
+        "next": [
+            "Feile",
+            "RightEdgeInSearchFeile",
+            "[JumpBack]SwipeRight"
+        ]
+    },
+    "LeftEdgeInSearchFeile": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": [
+                    "furniture/airship1.png",
+                    "furniture/airship2.png",
+                    "furniture/airship3.png"
+                ]
+            }
+        },
+        "next": [
+            "SearchFeileRight"
+        ]
+    },
+    "RightEdgeInSearchFeile": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": [
+                    "furniture/fireplace_light1.png",
+                    "furniture/fireplace_light_snow1.png",
+                    "furniture/fireplace_night1.png",
+                    "furniture/fireplace_night2.png",
+                    "furniture/fireplace_night_snow1.png",
+                    "furniture/fireplace_night_snow2.png"
+                ]
+            }
+        },
+        "next": [
+            "SearchFeileLeft"
+        ]
+    },
+    "Feile": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": [
+                    "furniture/feile_night1.png",
+                    "furniture/feile_night2.png",
+                    "furniture/feile_light1.png",
+                    "furniture/feile_light2.png"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "[JumpBack]Chat",
+            "[JumpBack]RecoveryButton",
+            "[JumpBack]GiveUpButton",
+            "[JumpBack]ClickFeileTwice",
+            "LeaveCurrentPage"
+        ]
+    },
+    "RecoveryButton": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [183,1063,361,87],
+                "expected": "一键找回"
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "RecoverPrizePage"
+        ]
+    },
+    "RecoverPrizePage": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "获得奖励"
+            }
+        },
+        "next": [
+            "CloseByClickBlank"
+        ]
+    },
+    "GiveUpButton": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [183,1063,361,87],
+                "expected": [
+                    "放弃"
+                ]
+            }
+        },
+        "max_hit": 1
+    },
+    "ClickFeileTwice": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": [
+                    "furniture/feile_night1.png",
+                    "furniture/feile_night2.png",
+                    "furniture/feile_light1.png",
+                    "furniture/feile_light2.png"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "max_hit": 1
+    }
+}
