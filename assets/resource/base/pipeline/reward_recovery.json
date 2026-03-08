@@ -70,9 +70,10 @@
             "[JumpBack]Chat",
             "[JumpBack]RecoveryButton",
             "[JumpBack]GiveUpButton",
-            "[JumpBack]ClickFeileTwice",
+            "Feile",
             "LeaveCurrentPage"
-        ]
+        ],
+        "post_delay": 2000
     },
     "RecoveryButton": {
         "recognition": {
@@ -109,23 +110,6 @@
                     "放弃"
                 ]
             }
-        },
-        "max_hit": 1
-    },
-    "ClickFeileTwice": {
-        "recognition": {
-            "type": "TemplateMatch",
-            "param": {
-                "template": [
-                    "furniture/feile_night1.png",
-                    "furniture/feile_night2.png",
-                    "furniture/feile_light1.png",
-                    "furniture/feile_light2.png"
-                ]
-            }
-        },
-        "action": {
-            "type": "Click"
         },
         "max_hit": 1
     }

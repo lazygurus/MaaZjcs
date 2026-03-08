@@ -37,10 +37,8 @@
         "action": "Click",
         "post_delay": 2000,
         "next": [
-            "Groceries"  // 先买杂货商店
-        ],
-        "on_error": [
-            "Store"  // 如果没能进入杂货店页面就重新来
+            "OpenStore",   // 没进入杂货商店页面就继续识别商店
+            "Groceries"    // 先买杂货商店
         ]
     },
     "LeftEdgeInSearchStore": {
