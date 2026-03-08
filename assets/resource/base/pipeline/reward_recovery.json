@@ -99,7 +99,8 @@
         },
         "next": [
             "CloseByClickBlank"
-        ]
+        ],
+        "timeout": 60000
     },
     "GiveUpButton": {
         "recognition": {
