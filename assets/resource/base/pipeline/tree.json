@@ -3,6 +3,8 @@
         "next": [
             "[JumpBack]LeaveCurrentPage",
             "[JumpBack]CloseGift",
+            "[JumpBack]CloseByClickBlank",
+            "[JumpBack]CardPage",
             "[JumpBack]HomePage",
             "SearchTreeLeft"
         ]
@@ -140,7 +142,7 @@
             "param": {
                 "roi": [24,129,133,126],
                 "template": [
-                    "red_lint.png"
+                    "lint/red_lint.png"
                 ]
             }
         },

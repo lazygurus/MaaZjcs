@@ -3,6 +3,8 @@
         "next": [
             "[JumpBack]LeaveCurrentPage",
             "[JumpBack]CloseGift",
+            "[JumpBack]CloseByClickBlank",
+            "[JumpBack]CardPage",
             "[JumpBack]GuildPage",
             "SearchGuildRight"
         ]
@@ -87,7 +89,7 @@
         "recognition": {
             "type": "TemplateMatch",
             "param": {
-                "roi": [182,1010,110,105],
+                "roi": [29,1003,672,131],
                 "template": [
                     "button/donate_button.png"
                 ]

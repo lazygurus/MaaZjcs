@@ -3,6 +3,8 @@
         "next": [
             "[JumpBack]LeaveCurrentPage",
             "[JumpBack]CloseGift",
+            "[JumpBack]CloseByClickBlank",
+            "[JumpBack]CardPage",
             "[JumpBack]HomePage",
             "SearchStoreLeft"
         ]

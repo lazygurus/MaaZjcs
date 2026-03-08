@@ -3,6 +3,8 @@
         "next": [
             "[JumpBack]LeaveCurrentPage",
             "[JumpBack]CloseGift",
+            "[JumpBack]CloseByClickBlank",
+            "[JumpBack]CardPage",
             "[JumpBack]HomePage",
             "GetAllPrize"
         ]
@@ -328,7 +330,7 @@
             "type": "TemplateMatch",
             "param": {
                 "roi": [182,485,133,99],
-                "template": "red_lint.png"
+                "template": "lint/red_lint.png"
             }
         },
         "action": {
@@ -363,7 +365,7 @@
             "type": "TemplateMatch",
             "param": {
                 "roi": [54,308,135,128],
-                "template": "red_lint.png"
+                "template": "lint/red_lint.png"
             }
         },
         "action": {
@@ -399,7 +401,7 @@
             "type": "TemplateMatch",
             "param": {
                 "roi": [20,181,130,131],
-                "template": "red_lint.png"
+                "template": "lint/red_lint.png"
             }
         },
         "action": {

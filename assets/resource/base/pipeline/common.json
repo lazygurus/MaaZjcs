@@ -146,6 +146,25 @@
         ],
         "post_delay": 1000
     },
+    "CardPage": {
+        "recognition": { 
+            "type": "TemplateMatch",
+            "param": {
+                "template": [
+                    "lint/card_left_bottom_corner.png",
+                    "lint/card_left_top_corner.png",
+                    "lint/card_right_top_corner.png",
+                    "lint/card_right_bottom_corner.png"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [339,1161,75,57]
+            }
+        }
+    },
     // 返回家园主页面
     "HomePage": {
         "recognition": {

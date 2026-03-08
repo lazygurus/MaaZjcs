@@ -104,6 +104,10 @@
         {
             "name": "领取奖励",
             "entry": "Prize"
+        },
+        {
+            "name": "测试功能",
+            "entry": "CardPage"
         }
         // {
         //     "name": "清理家园",
