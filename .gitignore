@@ -5,6 +5,9 @@ docs/zh_cn/
 # Prerequisites
 *.d
 
+# plan.md
+plan.md
+
 # Compiled Object files
 build
 build-*

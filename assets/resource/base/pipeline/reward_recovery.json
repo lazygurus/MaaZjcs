@@ -49,10 +49,7 @@
                     "furniture/fireplace_night_snow2.png"
                 ]
             }
-        },
-        "next": [
-            "SearchFeileLeft"
-        ]
+        }
     },
     "Feile": {
         "recognition": {

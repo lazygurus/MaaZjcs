@@ -72,10 +72,7 @@
                     "furniture/fireplace_night_snow2.png"
                 ]
             }
-        },
-        "next": [
-            "SearchStoreLeft"
-        ]
+        }
     },
     "Groceries": {
         "recognition": {
