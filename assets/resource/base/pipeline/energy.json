@@ -108,6 +108,7 @@
         },
         "next": [
             "[JumpBack]Loading",
+            "[JumpBack]Chat",
             "OpenMap"
         ]
     },
@@ -380,6 +381,7 @@
         },
         "next": [
             "[JumpBack]Loading",
+            "[JumpBack]Chat",
             "DigResourceMain"
         ],
         "post_delay": 3000

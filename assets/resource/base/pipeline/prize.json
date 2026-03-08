@@ -112,6 +112,7 @@
         },
         "next": [
             "[JumpBack]GetCommissionPrize",
+            "[JumpBack]CloseByClickBlank",
             "End"
         ],
         "post_delay": 1000,
