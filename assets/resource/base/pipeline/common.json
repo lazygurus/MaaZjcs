@@ -155,6 +155,9 @@
                     "lint/card_left_top_corner.png",
                     "lint/card_right_top_corner.png",
                     "lint/card_right_bottom_corner.png"
+                ],
+                "threshold": [
+                    0.9
                 ]
             }
         },

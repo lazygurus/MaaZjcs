@@ -15,7 +15,7 @@
             "[JumpBack]GetTaskPrizeMain",  // 领取任务的奖励
             "[JumpBack]GetShoppingMallPrizeMain",  // 领取商城的奖励
             "[JumpBack]GetPresentMain",  // 领取馈赠中的奖励
-            "[JumpBack]GetPresentPrize",  // 领取活动中的奖励
+            "[JumpBack]GetActivityPrizeMain",  // 领取活动中的奖励
             "End"
         ]
     },
@@ -40,7 +40,6 @@
         "recognition": {
             "type": "OCR",
             "param": {
-                "roi": [37,625,327,135],
                 "expected": [
                     "任务"
                 ]
@@ -468,5 +467,159 @@
             "End"
         ],
         "post_delay": 2000
+    },
+    "GetActivityPrizeMain": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "精彩活动"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "[JumpBack]EnterSecretPage",  // 秘宝大作战
+            "[JumpBack]EnterDailySignPage",  // 每日签到
+            "[JumpBack]SwipeActivityUp",
+            "LeaveCurrentPage"
+        ],
+        "post_delay": 1000,
+        "max_hit": 1
+    },
+    "SwipeActivityUp": {
+        "next": [
+            "SwipeUp"
+        ],
+        "max_hit": 5
+    },
+    "EnterSecretPage": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "秘宝"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "[JumpBack]SecretActivityPresent",
+            "[JumpBack]SecretEnergyPage",
+            "LeaveCurrentPage"
+        ],
+        "post_delay": 1000
+    },
+    "SecretActivityPresent": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [146,1175,568,85],
+                "expected": [
+                    "活动礼包"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "GetSecretPageActivityPresentPrize"
+        ],
+        "post_delay": 1000,
+        "max_hit": 1
+    },
+    "GetSecretPageActivityPresentPrize": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [1,253,181,152],
+                "template": [
+                    "lint/red_lint.png"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "ReceivePrize"
+        ]
+    },
+    "SecretEnergyPage": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [146,1175,568,85],
+                "expected": [
+                    "获取能量"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "[JumpBack]GetSecretEnergy",
+            "End"
+
+        ],
+        "post_delay": 1000,
+        "max_hit": 1
+    },
+    "GetSecretEnergy": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [528,629,171,515],
+                "expected": [
+                    "领取"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "EnterDailySignPage": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "每日签到"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "[JumpBack]GetDailySignPrize",
+            "LeaveCurrentPage"
+        ],
+        "max_hit": 1,
+        "post_delay": 1000
+    },
+    "GetDailySignPrize": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "领取",
+                    "补签"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "ReceivePrize"
+        ],
+        "post_delay": 1000
     }
 }
