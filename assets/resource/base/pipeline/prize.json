@@ -31,7 +31,8 @@
             "type": "Click"
         },
         "next": [
-            "EnterTaskPage"
+            "EnterTaskPage",
+            "LeaveCurrentPage"
         ],
         "post_delay": 1000,
         "max_hit": 1
@@ -159,7 +160,8 @@
             "type": "Click"
         },
         "next": [
-            "EnterShoppingMallPage"
+            "EnterShoppingMallPage",
+            "LeaveCurrentPage"
         ],
         "post_delay": 1000,
         "max_hit": 1
@@ -168,7 +170,6 @@
         "recognition": {
             "type": "OCR",
             "param": {
-                "roi": [359,628,318,134],
                 "expected": [
                     "商城"
                 ]
@@ -425,7 +426,8 @@
             "type": "Click"
         },
         "next": [
-            "EnterPresentPage"
+            "EnterPresentPage",
+            "LeaveCurrentPage"
         ],
         "post_delay": 1000,
         "max_hit": 1
@@ -472,6 +474,7 @@
         "recognition": {
             "type": "OCR",
             "param": {
+                "roi": [598,87,118,134],
                 "expected": [
                     "精彩活动"
                 ]
@@ -483,15 +486,15 @@
         "next": [
             "[JumpBack]EnterSecretPage",  // 秘宝大作战
             "[JumpBack]EnterDailySignPage",  // 每日签到
-            "[JumpBack]SwipeActivityUp",
+            "[JumpBack]SwipeActivityDown",
             "LeaveCurrentPage"
         ],
         "post_delay": 1000,
         "max_hit": 1
     },
-    "SwipeActivityUp": {
+    "SwipeActivityDown": {
         "next": [
-            "SwipeUp"
+            "SwipeDown"
         ],
         "max_hit": 5
     },
@@ -512,7 +515,8 @@
             "[JumpBack]SecretEnergyPage",
             "LeaveCurrentPage"
         ],
-        "post_delay": 1000
+        "post_delay": 1000,
+        "max_hit": 1
     },
     "SecretActivityPresent": {
         "recognition": {
@@ -528,7 +532,8 @@
             "type": "Click"
         },
         "next": [
-            "GetSecretPageActivityPresentPrize"
+            "GetSecretPageActivityPresentPrize",
+            "End"
         ],
         "post_delay": 1000,
         "max_hit": 1
