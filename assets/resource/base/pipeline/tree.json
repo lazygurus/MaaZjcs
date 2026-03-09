@@ -177,7 +177,7 @@
     },
     "SwipeExchangePetResourcePageDown": {
         "next": [
-            "SwipeUp"
+            "SwipeDown"
         ],
         "max_hit": 1
     },
