@@ -1,8 +1,8 @@
 {
     "preset": [
         {
-            "name": "小号预设",
-            "description": "小号预设好需要执行的任务及对应的选项",
+            "name": "杀猪小号日常",
+            "description": "杀猪小号日常需要执行的任务及对应的选项",
             "task": [
                 {
                     "name": "启动游戏",
@@ -14,6 +14,64 @@
                     "option": {
                         "晨星商店": "No"
                     }
+                },
+                {
+                    "name": "使用素材",
+                    "enabled": true,
+                    "option": {
+                        "选择素材": "金矿"
+                    }
+                },
+                {
+                    "name": "竞技场",
+                    "enabled": true,
+                    "option": {
+                        "挑战次数": {
+                            "次数": "3"
+                        }
+                    }
+                },
+                {
+                    "name": "找回奖励",
+                    "enabled": true
+                },
+                {
+                    "name": "使用体力",
+                    "enabled": true,
+                    "option": {
+                        "体力选择": "杀猪",
+                        "体力使用次数": {
+                            "次数": "999"
+                        }
+                    }
+                },
+                {
+                    "name": "领小推车",
+                    "enabled": true
+                },
+                {
+                    "name": "命运之树",
+                    "enabled": true,
+                    "option": {
+                        "购买宠物素材": "Yes",
+                        "选择宠物素材": "羊毛"
+                    }
+                },
+                {
+                    "name": "使用命运果实",
+                    "enabled": true
+                },
+                {
+                    "name": "羁绊冒险",
+                    "enabled": true
+                },
+                {
+                    "name": "公会",
+                    "enabled": true
+                },
+                {
+                    "name": "领取奖励",
+                    "enabled": true
                 }
             ]
         }

@@ -5,7 +5,9 @@
                 "/assets/resource/**/*.json",
                 "/install/resource/**/*.json",
                 "/assets/resource/**/*.jsonc",
-                "/install/resource/**/*.jsonc"
+                "/install/resource/**/*.jsonc",
+                "!assets/resource/preset/**/*.json",
+                "!assets/resource/preset/**/*.jsonc"  // 不校验 preset 目录下的 json 文件
             ],
             "url": "/deps/tools/pipeline.schema.json"
         },

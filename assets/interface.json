@@ -67,6 +67,10 @@
             ]
         },
         {
+            "name": "找回奖励",
+            "entry": "RewardRecovery"
+        },
+        {
             "name": "使用体力",
             "entry": "Energy",
             "option": [
@@ -90,10 +94,6 @@
             "entry": "Fruit"
         },
         {
-            "name": "找回奖励",
-            "entry": "RewardRecovery"
-        },
-        {
             "name": "羁绊冒险",
             "entry": "Commission"
         },
@@ -105,10 +105,10 @@
             "name": "领取奖励",
             "entry": "Prize"
         },
-        {
-            "name": "测试功能",
-            "entry": "CardPage"
-        }
+        // {
+        //     "name": "测试功能",
+        //     "entry": "CardPage"
+        // }
         // {
         //     "name": "清理家园",
         //     "entry": "CleanHomeAnimal"
@@ -168,7 +168,6 @@
         },
         "选择素材": {
             "type": "select",
-            "description": "选择素材种类",
             "label": "选择素材",
             "default_case": "金矿",
             "cases": [
@@ -209,7 +208,6 @@
         "挑战次数": {
             "type": "input",
             "label": "挑战次数",
-            "description": "选择挑战次数",
             "inputs": [
                 {
                     "name": "次数",
@@ -263,7 +261,6 @@
         "体力使用次数": {
             "type": "input",
             "label": "体力使用次数",
-            "description": "选择体力使用次数",
             "inputs": [
                 {
                     "name": "次数",
@@ -283,7 +280,6 @@
         },
         "购买宠物素材": {
             "type": "switch",
-            "description": "是否购买宠物素材",
             "label": "购买宠物素材",
             "default_case": "No",
             "cases": [
@@ -310,7 +306,6 @@
         },
         "选择宠物素材": {
             "type": "select",
-            "description": "选择宠物素材",
             "label": "选择宠物素材",
             "default_case": "羊毛",
             "cases": [
@@ -405,7 +400,7 @@
         }
     },
     "import": [
-        "preset/MainAccount",
-        "preset/SideAccount"
+        "resource/preset/MainAccount.json",
+        "resource/preset/SideAccount.json"
     ]
 }
