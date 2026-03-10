@@ -60,6 +60,7 @@
                 "template": [
                     "furniture/tree_light.png",
                     "furniture/tree_night.png",
+                    "furniture/tree_afternoon.png",
                     "furniture/tree_light_snow.png",
                     "furniture/tree_night_snow.png"
                 ]

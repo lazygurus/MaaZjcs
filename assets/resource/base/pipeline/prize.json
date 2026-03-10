@@ -112,7 +112,7 @@
         },
         "next": [
             "[JumpBack]GetCommissionPrize",
-            "[JumpBack]CloseByClickBlank",
+            "[JumpBack]Improvefavorability",
             "End"
         ],
         "post_delay": 1000,
@@ -140,6 +140,20 @@
                 "roi": [17,168,692,998],
                 "expected": [
                     "提交"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_delay": 1000
+    },
+    "Improvefavorability": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "好感度"
                 ]
             }
         },
