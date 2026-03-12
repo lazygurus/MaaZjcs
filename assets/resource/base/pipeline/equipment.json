@@ -1,0 +1,376 @@
+{
+    "Equipment": {
+        "next": [
+            "[JumpBack]LeaveCurrentPage",
+            "[JumpBack]CloseGift",
+            "[JumpBack]CloseByClickBlank",
+            "[JumpBack]CardPage",
+            "EquipmentMain"
+        ]
+    },
+    "EquipmentMain": {
+        "next": [
+            "[JumpBack]EquipmentReplacement",
+            "[JumpBack]EquipmentResolvement",
+            "[JumpBack]CardPage",
+            "End"
+        ]
+    },
+    "EquipmentReplacement": {
+        "enabled": true,
+        "next": [
+            "[JumpBack]CharcterPage",
+            "EquipmentSlot"
+        ],
+        "max_hit": 1
+    },
+    "EquipmentSlot": {
+        "next": [
+            "[JumpBack]EquipmentSlot1",
+            "[JumpBack]EquipmentSlot2",
+            "[JumpBack]EquipmentSlot3",
+            "[JumpBack]EquipmentSlot4",
+            "[JumpBack]EquipmentSlot5",
+            "End"
+        ]
+    },
+    "EquipmentSlot1": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [31,354,119,120],
+                "template": [
+                    "lint/red_lint.png"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "ReplaceEquipment",
+            "End"
+        ],
+        "max_hit": 1
+    },
+    "EquipmentSlot2": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [29,539,121,119],
+                "template": [
+                    "lint/red_lint.png"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "ReplaceEquipment",
+            "End"
+        ],
+        "max_hit": 1
+    },
+    "EquipmentSlot3": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [557,304,123,118],
+                "template": [
+                    "lint/red_lint.png"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "ReplaceEquipment",
+            "End"
+        ],
+        "max_hit": 1
+    },
+    "EquipmentSlot4": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [591,442,117,116],
+                "template": [
+                    "lint/red_lint.png"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "ReplaceEquipment",
+            "End"
+        ],
+        "max_hit": 1
+    },
+    "EquipmentSlot5": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [562,581,116,116],
+                "template": [
+                    "lint/red_lint.png"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "ReplaceEquipment",
+            "End"
+        ],
+        "max_hit": 1
+    },
+    "ReplaceEquipment": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "替换"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "EmptyEquipment",
+            "ChooseReplaceEquipment"
+        ],
+        "post_delay": 2000
+    },
+    "EmptyEquipment": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "没有可更换的装备"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [321,1117,93,53]
+            }
+        },
+        "post_delay": 2000
+    },
+    "ChooseReplaceEquipment": {
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [123,318,57,67]
+            }
+        },
+        "next": [
+            "ConfirmReplaceEquipment"
+        ],
+        "post_delay": 2000
+    },
+    "ConfirmReplaceEquipment": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [4,256,720,841],
+                "expected": [
+                    "更换"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "ReplaceEquipmentSuccess"
+        ]
+    },
+    "ReplaceEquipmentSuccess": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [228,269,307,118],
+                "expected": [
+                    "更换成功"
+                ]
+            }
+        }
+    },
+    "EquipmentResolvement": {
+        "enabled": true,
+        "next": [
+            "[JumpBack]HomePage",
+            "SearchResolveEquipmentRight"
+        ],
+        "max_hit": 1
+    },
+    "SearchResolveEquipmentRight": {
+        "next": [
+            "OpenResolveEquipment",
+            "[JumpBack]SwipeRight"
+        ]
+    },
+    "OpenResolveEquipment": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": [
+                    "furniture/fireplace_light1.png",
+                    "furniture/fireplace_light_snow1.png",
+                    "furniture/fireplace_night1.png",
+                    "furniture/fireplace_night2.png",
+                    "furniture/fireplace_night_snow1.png",
+                    "furniture/fireplace_night_snow2.png"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "ResolveEquipmentPage"
+        ]
+    },
+    "ResolveEquipmentPage": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [150,1176,559,86],
+                "expected": [
+                    "分解"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "[JumpBack]ChooseWhiteEquipment",
+            "End"
+        ],
+        "post_delay": 3000
+    },
+    "ChooseWhiteEquipment": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [2,866,719,297],
+                "expected": [
+                    "普通装备"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "ChooseBlueEquipment"
+        ]
+    },
+    "ChooseBlueEquipment": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [2,866,719,297],
+                "expected": [
+                    "稀有装备"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "ChoosePurpleEquipment"
+        ]
+    },
+    "ChoosePurpleEquipment": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [2,866,719,297],
+                "expected": [
+                    "史诗装备"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "ChooseOrangeEquipment"
+        ]
+    },
+    "ChooseOrangeEquipment": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [2,866,719,297],
+                "expected": [
+                    "传说装备"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "StopResolveEquipment",
+            "ResolveEquipment"
+        ]
+    },
+    "StopResolveEquipment": { 
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [21,875,224,48],
+                "expected": [
+                    "0/\\d*"  // 没有可分解的装备
+                ]
+            }
+        },
+        "next": [
+            "LeaveCurrentPage"
+        ],
+        "post_delay": 2000
+    },
+    "ResolveEquipment": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [2,866,719,297],
+                "expected": [
+                    "分解"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "ResolveEquipmentSuccess"
+        ]
+    },
+    "ResolveEquipmentSuccess": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "分解成功"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_delay": 2000
+    }
+}

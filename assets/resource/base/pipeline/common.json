@@ -253,6 +253,27 @@
         "max_hit": 1,
         "post_delay": 3000
     },
+    "CharcterPage": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    3,
+                    1147,
+                    714,
+                    136
+                ],
+                "template": [
+                    "button/character.png"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "max_hit": 1,
+        "post_delay": 3000
+    },
     // 向左划动
     "SwipeLeft": {
         "action": {

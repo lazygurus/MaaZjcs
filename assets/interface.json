@@ -57,12 +57,19 @@
             "entry": "Mail"
         },
         {
-            "name": "领小推车",
-            "entry": "Cart"
-        },
-        {
             "name": "领取床",
             "entry": "Bed"
+        },
+        {
+            "name": "命运之树",
+            "entry": "Tree",
+            "option": [
+                "购买宠物素材"
+            ]
+        },
+        {
+            "name": "领小推车",
+            "entry": "Cart"
         },
         {
             "name": "找回奖励",
@@ -83,6 +90,10 @@
             ]
         },
         {
+            "name": "羁绊冒险",
+            "entry": "Adventure"
+        },
+        {
             "name": "使用体力",
             "entry": "Energy",
             "option": [
@@ -91,28 +102,21 @@
             ]
         },
         {
-            "name": "命运之树",
-            "entry": "Tree",
-            "option": [
-                "购买宠物素材"
-            ]
-        },
-        {
             "name": "使用命运果实",
             "entry": "Fruit"
-        },
-        {
-            "name": "羁绊冒险",
-            "entry": "Commission"
         },
         {
             "name": "公会",
             "entry": "Guild"
         },
         {
+            "name": "装备替换与分解",
+            "entry": "Equipment"
+        },
+        {
             "name": "领取奖励",
             "entry": "Prize"
-        },
+        }
         // {
         //     "name": "测试功能",
         //     "entry": "CardPage"
