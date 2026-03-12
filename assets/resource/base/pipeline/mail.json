@@ -59,7 +59,9 @@
             "param": {
                 "template": [
                     "furniture/mail_light1.png",
-                    "furniture/mail_light2.png"
+                    "furniture/mail_light2.png",
+                    "furniture/mail_night1.png",
+                    "furniture/mail_night2.png"
                 ]
             }
         },
