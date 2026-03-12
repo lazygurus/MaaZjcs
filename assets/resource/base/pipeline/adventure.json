@@ -1,5 +1,5 @@
 {
-    "Commission": {
+    "Adventure": {
         "next": [
             "[JumpBack]LeaveCurrentPage",
             "[JumpBack]CloseGift",
