@@ -53,6 +53,10 @@
             ]
         },
         {
+            "name": "领取邮件",
+            "entry": "Mail"
+        },
+        {
             "name": "使用素材",
             "entry": "Material",
             "option": [

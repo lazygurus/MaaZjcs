@@ -1,0 +1,101 @@
+{
+    "Mail": {
+        "next": [
+            "[JumpBack]LeaveCurrentPage",
+            "[JumpBack]CloseGift",
+            "[JumpBack]CloseByClickBlank",
+            "[JumpBack]CardPage",
+            "[JumpBack]HomePage",
+            "SearchMailRight"
+        ]
+    },  
+    "SearchMailRight": {
+        "next": [
+            "OpenMail",
+            "RightEdgeInSearchCart",
+            "[JumpBack]SwipeRight"
+        ]
+    },
+    "SearchMailLeft": {
+        "next": [
+            "OpenMail",
+            "LeftEdgeInSearchMail",
+            "[JumpBack]SwipeLeft"
+        ]
+    },
+    "LeftEdgeInSearchMail": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": [
+                    "furniture/airship1.png",
+                    "furniture/airship2.png",
+                    "furniture/airship3.png"
+                ]
+            }
+        }
+    },
+    "RightEdgeInSearchMail": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": [
+                    "furniture/fireplace_light1.png",
+                    "furniture/fireplace_light_snow1.png",
+                    "furniture/fireplace_night1.png",
+                    "furniture/fireplace_night2.png",
+                    "furniture/fireplace_night_snow1.png",
+                    "furniture/fireplace_night_snow2.png"
+                ]
+            }
+        },
+        "next": [
+            "SearchMailLeft"
+        ]
+    },
+    "OpenMail": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": [
+                    "furniture/mail_light1.png",
+                    "furniture/mail_light2.png"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "[JumpBack]GetMailPrize",
+            "LeaveMail"
+        ],
+        "post_delay": 2000
+    },
+    "GetMailPrize": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected"  : [
+                    "全部领取"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "ReceivePrize"
+        ],
+        "post_delay": 2000,
+        "max_hit": 1
+    },
+    "LeaveMail": {
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [308,1134,78,45]
+            }
+        }
+    }
+}
