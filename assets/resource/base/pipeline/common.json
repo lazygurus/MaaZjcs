@@ -84,7 +84,7 @@
         "recognition": {
             "type": "OCR",
             "param": {
-                "roi": [222,624,273,43],
+                "roi": [121,135,469,532],
                 "expected": [
                     "礼包"
                 ]
