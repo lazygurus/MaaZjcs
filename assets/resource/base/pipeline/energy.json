@@ -174,6 +174,7 @@
         "next": [
             "[JumpBack]FindInMap",
             "[JumpBack]KillPig",
+            "[JumpBack]CloseGift",
             "[JumpBack]SlimeSearch",
             "End"
         ],
@@ -390,6 +391,7 @@
         "next": [
             "[JumpBack]LocateResource",
             "[JumpBack]AutoDigResource",
+            "[JumpBack]CloseGift",
             "[JumpBack]SlimeSearch",
             "End"
         ],
