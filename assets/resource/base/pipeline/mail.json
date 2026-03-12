@@ -12,7 +12,7 @@
     "SearchMailRight": {
         "next": [
             "OpenMail",
-            "RightEdgeInSearchCart",
+            "RightEdgeInSearchMail",
             "[JumpBack]SwipeRight"
         ]
     },
