@@ -16,6 +16,30 @@
                     }
                 },
                 {
+                    "name": "领取邮件",
+                    "enabled": true
+                },
+                {
+                    "name": "领取床",
+                    "enabled": true
+                },
+                {
+                    "name": "命运之树",
+                    "enabled": true,
+                    "option": {
+                        "购买宠物素材": "Yes",
+                        "选择宠物素材": "羊毛"
+                    }
+                },
+                {
+                    "name": "领小推车",
+                    "enabled": true
+                },
+                {
+                    "name": "找回奖励",
+                    "enabled": true
+                },
+                {
                     "name": "使用素材",
                     "enabled": true,
                     "option": {
@@ -32,7 +56,7 @@
                     }
                 },
                 {
-                    "name": "找回奖励",
+                    "name": "羁绊冒险",
                     "enabled": true
                 },
                 {
@@ -46,27 +70,15 @@
                     }
                 },
                 {
-                    "name": "领小推车",
-                    "enabled": true
-                },
-                {
-                    "name": "命运之树",
-                    "enabled": true,
-                    "option": {
-                        "购买宠物素材": "Yes",
-                        "选择宠物素材": "羊毛"
-                    }
-                },
-                {
                     "name": "使用命运果实",
                     "enabled": true
                 },
                 {
-                    "name": "羁绊冒险",
+                    "name": "公会",
                     "enabled": true
                 },
                 {
-                    "name": "公会",
+                    "name": "装备替换与分解",
                     "enabled": true
                 },
                 {
