@@ -1,0 +1,129 @@
+{
+    "Bed": {
+        "next": [
+            "[JumpBack]LeaveCurrentPage",
+            "[JumpBack]CloseGift",
+            "[JumpBack]CloseByClickBlank",
+            "[JumpBack]CardPage",
+            "[JumpBack]HomePage",
+            "SearchBedRight"
+        ]
+    },  
+    "SearchBedRight": {
+        "next": [
+            "OpenBed",
+            "RightEdgeInSearchBed",
+            "[JumpBack]SwipeRight"
+        ]
+    },
+    "SearchBedLeft": {
+        "next": [
+            "OpenBed",
+            "LeftEdgeInSearchBed",
+            "[JumpBack]SwipeLeft"
+        ]
+    },
+    "LeftEdgeInSearchBed": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": [
+                    "furniture/airship1.png",
+                    "furniture/airship2.png",
+                    "furniture/airship3.png"
+                ]
+            }
+        }
+    },
+    "RightEdgeInSearchBed": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": [
+                    "furniture/fireplace_light1.png",
+                    "furniture/fireplace_light_snow1.png",
+                    "furniture/fireplace_night1.png",
+                    "furniture/fireplace_night2.png",
+                    "furniture/fireplace_night_snow1.png",
+                    "furniture/fireplace_night_snow2.png"
+                ]
+            }
+        },
+        "next": [
+            "SearchBedLeft"
+        ]
+    },
+    "OpenBed": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": [
+                    "furniture/bed_night1.png",
+                    "furniture/bed_night2.png",
+                    "furniture/bed_light1.png"
+                ],
+                "threshold": [
+                    0.9
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "[JumpBack]CloseGift",
+            "FreeAcceleration",
+            "GlobalAccelaration",
+            "OpenBed"
+        ],
+        "post_delay": 2000
+    },
+    "FreeAcceleration": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "免费加速"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "[JumpBack]CloseGift",
+            "ConfirmAcceleration",
+            "End"
+        ],
+        "post_delay": 2000
+    },
+    "ConfirmAcceleration": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "确定"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "GlobalAccelaration": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "全局加速"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [325,1128,60,38]
+            }
+        }
+    }
+}

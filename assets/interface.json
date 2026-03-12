@@ -57,6 +57,18 @@
             "entry": "Mail"
         },
         {
+            "name": "领小推车",
+            "entry": "Cart"
+        },
+        {
+            "name": "领取床",
+            "entry": "Bed"
+        },
+        {
+            "name": "找回奖励",
+            "entry": "RewardRecovery"
+        },
+        {
             "name": "使用素材",
             "entry": "Material",
             "option": [
@@ -71,20 +83,12 @@
             ]
         },
         {
-            "name": "找回奖励",
-            "entry": "RewardRecovery"
-        },
-        {
             "name": "使用体力",
             "entry": "Energy",
             "option": [
                 "体力选择",
                 "体力使用次数"
             ]
-        },
-        {
-            "name": "领小推车",
-            "entry": "Cart"
         },
         {
             "name": "命运之树",
