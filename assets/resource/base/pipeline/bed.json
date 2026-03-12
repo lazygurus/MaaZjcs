@@ -60,7 +60,9 @@
                 "template": [
                     "furniture/bed_night1.png",
                     "furniture/bed_night2.png",
-                    "furniture/bed_light1.png"
+                    "furniture/bed_light1.png",
+                    "furniture/bed_light2.png",
+                    "furniture/bed_light3.png"
                 ],
                 "threshold": [
                     0.9
@@ -92,7 +94,7 @@
         },
         "next": [
             "[JumpBack]CloseGift",
-            "ConfirmAcceleration",
+            "[JumpBack]ConfirmAcceleration",
             "End"
         ],
         "post_delay": 2000
