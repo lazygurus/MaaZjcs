@@ -11,6 +11,7 @@
     },
     "GetAllPrize": {
         "next": [
+            "[JumpBack]CloseGift",
             "[JumpBack]GetActivityPrizeMain",  // 领取活动中的奖励(包括秘宝和每日奖励)
             "[JumpBack]LeaveCurrentPage",
             "[JumpBack]GetTaskPrizeMain",  // 领取任务的奖励
